@@ -1,0 +1,6 @@
+{
+  "baseUrl": "https://ui.cogmento.com",
+  "projectId": "wye8d5",
+  "pageLoadTimeout": 100000,
+  "defaultCommandTimeout": 10000
+}

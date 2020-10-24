@@ -1,0 +1,19 @@
+{
+  "name": "cypress_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cypress:open": "cypress run",
+    "tests": "cypress run",
+    "cy:run": "cypress run"
+  },
+  "keywords": [],
+  "author": "Praveen Reddy Narala",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "cypress": "^5.4.0",
+    "cypress-xpath": "^1.6.0"
+  }
+}
