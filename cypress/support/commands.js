@@ -24,9 +24,7 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
-/**
- * Create element
- */
+//Create element
 Cypress.Commands.add('getElement', (locatorType, weblocator, timeout=10) => {
     if(locatorType === 'CSS'){
         cy.get(weblocator, {timeout: timeout}).then(($ele) => {
@@ -47,10 +45,7 @@ Cypress.Commands.add('selectlistitem', (weblocator, option) => {
     })
 })
 
-/**
- * Get text on an element
- * @param {String} element_locator 
- */
+//Get text on an element
 Cypress.Commands.add('getText', (locatorType, weblocator, timeout=10) => {
     try {
         cy.getElement(locatorType, weblocator, timeout).should('be.visible').then(($text) => {
@@ -65,29 +60,17 @@ Cypress.Commands.add('getText', (locatorType, weblocator, timeout=10) => {
     
 })
 
-/**
- * Click on Button using its name
- * @param {String} buttonName 
- * @param {Boolean} matchFlag 
- */
+//Click on Button using its name
 Cypress.Commands.add('clickButtonUsingName', (buttonName, matchFlag=false) => {
     cy.get('button').contains(buttonName, {matchCase: matchFlag}).should('be.visible').click()
 })
 
-/**
- * Set value in Text Field
- * @param {String} element_locator 
- * @param {String} value 
- */
+//Set value in Text Field
 Cypress.Commands.add('setValue', (element_locator, value) => {
     cy.get(element_locator).should('be.visible').clear().type(value)
 })
 
-/**
- * Click element
- * @param {String} element_locator
- * @param {*} timeout 
- */
+//Click element
 Cypress.Commands.add('clickElement', (element_locator, timeout=10) => {
     try {
         cy.get(element_locator, {timeout: timeout}).should('be.visible').click()
@@ -96,11 +79,7 @@ Cypress.Commands.add('clickElement', (element_locator, timeout=10) => {
     }
 })
 
-/**
- * Click element
- * @param {String} element_locator
- * @param {*} timeout 
- */
+//Click element
 Cypress.Commands.add('clickElementUsingXPath', (element_locator, timeout=10) => {
     try {
         cy.xpath(element_locator, {timeout: timeout}).should('be.visible').click({force:true})
@@ -109,11 +88,7 @@ Cypress.Commands.add('clickElementUsingXPath', (element_locator, timeout=10) => 
     }
 })
 
-/**
- * Click element using time out
- * @param {String} element_locator
- * @param {*} timeout 
- */
+//Click element using time out
 Cypress.Commands.add('clickElementForce', (element_locator, timeout=10) => {
     try {
         if(timeout != null){
@@ -124,25 +99,16 @@ Cypress.Commands.add('clickElementForce', (element_locator, timeout=10) => {
     }
 })
 
-/**
- * Click element multiple tiles using time out
- * @param {String} element_locator
- * @param {*} timeout 
- */
+//Click element multiple tiles using time out
 Cypress.Commands.add('clickElementMultipleTimes', (locatorType, weblocator, timeout=10) => {
     try {
         cy.getElement(locatorType, weblocator, timeout).should('be.visible').click({multiple: true})
-        // cy.get(element_locator, {timeout: timeout}).should('be.visible').click({multiple: true})
     } catch (error) {
         cy.log('Unable to click multiple times on element')
     }
 })
 
-/**
- * Generate random number
- * @param {*} min 
- * @param {*} max 
- */
+//Generate random number
 Cypress.Commands.add('random_num', (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 })
