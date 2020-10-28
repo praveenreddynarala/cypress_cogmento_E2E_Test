@@ -4,16 +4,23 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cypress:open": "cypress run",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
     "tests": "cypress run",
-    "cy:run": "cypress run"
+    "cy:run": "cypress run",
+    "cypress:chrome": "cypress run --browser chrome --headless"
   },
   "keywords": [],
   "author": "Praveen Reddy Narala",
   "license": "ISC",
   "devDependencies": {
+    "@types/cypress-cucumber-preprocessor": "^3.0.0",
     "chai": "^4.2.0",
     "cypress": "^5.4.0",
+    "cypress-cucumber-preprocessor": "^4.0.0",
     "cypress-xpath": "^1.6.0"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
   }
 }

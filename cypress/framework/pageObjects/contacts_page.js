@@ -15,20 +15,26 @@ const main_table_body = 'div.main-content  table > tbody > tr'
 
 /**
  * Create new contact
+ * @param {*} fName 
+ * @param {*} lName 
+ * @param {*} mName 
+ * @param {*} category 
+ * @param {*} status 
+ * @param {*} description 
  */
-export const create_new_contact = () => {
-    let firstName = 'Praveen' + random_num(1, 50)
+export const create_new_contact = (fName, lName, mName, category, status, description) => {
+    let firstName = fName + random_num(1, 50)
     cy.clickButtonUsingName('New')
     cy.setValue(firstNameTxt, firstName)
-    cy.setValue(lastNameTxt, 'Narala')
-    cy.setValue(middleNameText, 'Reddy')
+    cy.setValue(lastNameTxt, lName)
+    cy.setValue(middleNameText, mName)
     cy.get(companyTxt).click().should('have.attr', 'aria-expanded', 'true')
     cy.setValue(companyTxtInput, 'Test' + random_num(1, 50))
     cy.clickElement(categoryTxt)
-    cy.selectlistitem(listField, 'Affiliate')
+    cy.selectlistitem(listField, category)
     cy.clickElement(statusInput)
-    cy.selectlistitem(listField, 'New')
-    cy.setValue(descriptionTxtArea, 'Sample Description!')
+    cy.selectlistitem(listField, status)
+    cy.setValue(descriptionTxtArea, description)
     cy.get(firstNameTxt).then((ele) => {
         let firstName = Cypress.$(ele).val()
         cy.log(firstName)

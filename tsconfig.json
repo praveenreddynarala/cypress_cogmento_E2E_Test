@@ -4,8 +4,9 @@
       "allowJs": true,
       "noEmit": true,
       "types": [
-        "cypress"
-      ]
+        "cypress",
+      ],
+      "esModuleInterop": true
     },
     "include": [
         "./node_modules/cypress",

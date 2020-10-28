@@ -69,7 +69,7 @@ export const validate_created_event = (created_event) => {
  * Edit created event
  */
 export const edit_created_event = () => {
-    cy.clickElement(edit_eventBtn)
+    cy.clickElement(edit_eventBtn, 10000)
     cy.clickElement(alldayCheckField)
     cy.clickElement(saveBtn)
 }
@@ -87,18 +87,20 @@ export const delete_created_event = () => {
 
 /**
  * Manage Calendar
+ * @param {string} eventName 
  */
-export const manage_calendar = () => {
+export const manage_calendar = (eventName) => {
     cy.clickElementUsingXPath(manage_calendarLink, 10000)
     cy.get(calander_manager_controls.replace('[INDEX]', '3')).should('be.visible').first().click()
-    cy.setValue(manage_calendarTxtField, 'Praveen Narala <praveenreddy.narala@gmail.com> 1')
+    cy.setValue(manage_calendarTxtField, eventName)
     cy.clickButtonUsingName('Save')
     cy.clickButtonUsingName('Close')
 }
 
 /**
  * Validate updated manage calendar value
+ * @param {string} eventName 
  */
-export const validate_updated_manage_calendar_value = () => {
-    cy.get('label').contains('Praveen Narala <praveenreddy.narala@gmail.com> 1').should('be.visible')
+export const validate_updated_manage_calendar_value = (eventName) => {
+    cy.get('label').contains(eventName).should('be.visible')
 }
