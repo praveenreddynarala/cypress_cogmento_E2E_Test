@@ -4,7 +4,6 @@ import { global_search } from '../../framework/pageObjects/home_page'
 
 let created_contact
 When('user create new contact:', (dataTable) => {
-    // cy.log(dataTable.rawTable)
     cy.log(dataTable.hashes())
     const userDetails = dataTable.hashes()
     for(const row of userDetails){
