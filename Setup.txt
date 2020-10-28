@@ -1,3 +1,26 @@
+Setup Cypress:
+
+    System Requirements:
+        1. Windows 7 or above
+        2. macOS 10.9 and above (64-bit only)
+        3. Linux Ubuntu 12.04 and above, Fedora 21 and Debian 8 (64-bit only)
+
+    Node.js:
+        1. Node.js 10 or 12 and above
+    
+    Visual Studio Code:
+        1. Install Visual Studio Code
+
+    Install Cypress via npm:
+        1. cd /your/project/path
+        2. npm init
+        3. npm install cypress --save-dev
+        (OR)
+        1. cd /your/project/path
+        2. run 'code .' and enter. It will launch Visual Studio Code IDE 
+        3. In Terminal -> run npm install cypress --save-dev
+
+
 Set baseUrl:
     cypress.json -> add "baseUrl":"https://www.google.com/"
 
