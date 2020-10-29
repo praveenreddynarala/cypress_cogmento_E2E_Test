@@ -210,3 +210,16 @@ Setup Cypress:
             Background: Login to application
             Given user login to applications
             And user navigate to "calendar" screen
+    
+    Enabel Cucumber JSON Report:
+        The cypress-cucumber-preprocessor can generate a cucumber.json file output as it runs the features files. This is separate from, and in addition to, any Mocha reporter configured in Cypress.
+        Output, by default, is written to the folder cypress/cucumber-json, and one file is generated per feature.
+        Add the following to the cypress-cucumber-preprocessor section in package.json to turn it off or change the defaults:
+            "cypress-cucumber-preprocessor": {
+                "cucumberJson": {
+                "generate": true,
+                "outputFolder": "cypress/cucumber-json",
+                "filePrefix": "",
+                "fileSuffix": ".cucumber"
+                }
+            }

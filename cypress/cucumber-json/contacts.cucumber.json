@@ -1,0 +1,136 @@
+[
+  {
+    "keyword": "Feature",
+    "name": "Open CRM Contacts",
+    "line": 1,
+    "id": "open-crm-contacts",
+    "tags": [],
+    "uri": "contacts.feature",
+    "elements": [
+      {
+        "id": "open-crm-contacts;create-new-contact",
+        "keyword": "Scenario",
+        "line": 6,
+        "name": "Create new contact",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "user login to applications",
+            "result": {
+              "status": "passed",
+              "duration": 10554000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "user navigate to \"contacts\" screen",
+            "result": {
+              "status": "passed",
+              "duration": 8342000000
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "FirstName",
+                      "LastName",
+                      "MiddleName",
+                      "Category",
+                      "Status",
+                      "Description"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "Praveen",
+                      "Narala",
+                      "Reddy",
+                      "Affiliate",
+                      "New",
+                      "Sample Description!"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "When ",
+            "line": 8,
+            "name": "user create new contact:",
+            "result": {
+              "status": "passed",
+              "duration": 10407000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 11,
+            "name": "user should be able to validate created contact",
+            "result": {
+              "status": "failed",
+              "duration": 17481000000,
+              "error_message": "AssertionError: Timed out retrying: Expected to find element: `div.main-content  table > tbody > tr`, but never found it.\n    at validate_created_contact (https://ui.cogmento.com/__cypress/tests?p=cypress\\integration\\contacts.feature:64:6)\n    at Context.eval (https://ui.cogmento.com/__cypress/tests?p=cypress\\integration\\contacts.feature:282:47)\n    at Context.resolveAndRunStepDefinition (https://ui.cogmento.com/__cypress/tests?p=cypress\\integration\\contacts.feature:20325:9)\n    at Context.eval (https://ui.cogmento.com/__cypress/tests?p=cypress\\integration\\contacts.feature:19666:35)"
+            }
+          }
+        ]
+      },
+      {
+        "id": "open-crm-contacts;deleted-created-contact",
+        "keyword": "Scenario",
+        "line": 13,
+        "name": "Deleted created contact",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "user login to applications",
+            "result": {
+              "status": "failed",
+              "duration": 21262000000,
+              "error_message": "AssertionError: Timed out retrying: expected '<span.user-display>' to be 'visible'\n\nThis element `<span.user-display>` is not visible because it has CSS property: `position: fixed` and it's being covered by another element:\n\n`<div class=\"ui page modals dimmer transition visible active\" style=\"display: flex !important;\">...</div>`\n    at Context.eval (https://ui.cogmento.com/__cypress/tests?p=cypress\\support\\index.js:58:53)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "user search for created contact",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "user delete created contact",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 16,
+            "name": "user should not be able to see deleted contact",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
