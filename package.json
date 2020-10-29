@@ -16,17 +16,17 @@
   "devDependencies": {
     "@types/cypress-cucumber-preprocessor": "^3.0.0",
     "chai": "^4.2.0",
-    "cypress": "^5.4.0",
+    "cypress": "^5.5.0",
     "cypress-cucumber-preprocessor": "^4.0.0",
     "cypress-xpath": "^1.6.0"
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true,
     "cucumberJson": {
-        "generate": true,
-        "outputFolder": "cypress/cucumber-json",
-        "filePrefix": "",
-        "fileSuffix": ".cucumber"
-      }
+      "generate": true,
+      "outputFolder": "cypress/cucumber-json",
+      "filePrefix": "",
+      "fileSuffix": ".cucumber"
+    }
   }
 }
