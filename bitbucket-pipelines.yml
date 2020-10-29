@@ -1,0 +1,26 @@
+# This is an example Starter pipeline configuration
+# Use a skeleton to build, test and deploy using manual and parallel steps
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+#image: atlassian/default-image:2
+image: node:10.8.0
+options:
+  max-time: 30
+pipelines:
+  branches:
+    cucumber:
+      - parallel:
+            - step:
+                name: 'Install, build and tests'
+                caches:
+                  - npm
+                  - cypress
+                image: cypress/base:10
+                script:
+                  - echo "Your build and test goes here..."
+                  - npm ci
+                  - npm run cypress:chrome || true
+definitions:
+  caches:
+    npm: $HOME/.npm
+    cypress: $HOME/.cache/Cypress

@@ -22,7 +22,7 @@
             "name": "user login to applications",
             "result": {
               "status": "passed",
-              "duration": 10554000000
+              "duration": 5312000000
             }
           },
           {
@@ -32,7 +32,7 @@
             "name": "user navigate to \"contacts\" screen",
             "result": {
               "status": "passed",
-              "duration": 8342000000
+              "duration": 2080000000
             }
           },
           {
@@ -67,7 +67,7 @@
             "name": "user create new contact:",
             "result": {
               "status": "passed",
-              "duration": 10407000000
+              "duration": 5477000000
             }
           },
           {
@@ -77,7 +77,7 @@
             "name": "user should be able to validate created contact",
             "result": {
               "status": "failed",
-              "duration": 17481000000,
+              "duration": 16512000000,
               "error_message": "AssertionError: Timed out retrying: Expected to find element: `div.main-content  table > tbody > tr`, but never found it.\n    at validate_created_contact (https://ui.cogmento.com/__cypress/tests?p=cypress\\integration\\contacts.feature:64:6)\n    at Context.eval (https://ui.cogmento.com/__cypress/tests?p=cypress\\integration\\contacts.feature:282:47)\n    at Context.resolveAndRunStepDefinition (https://ui.cogmento.com/__cypress/tests?p=cypress\\integration\\contacts.feature:20325:9)\n    at Context.eval (https://ui.cogmento.com/__cypress/tests?p=cypress\\integration\\contacts.feature:19666:35)"
             }
           }
@@ -97,9 +97,8 @@
             "line": 4,
             "name": "user login to applications",
             "result": {
-              "status": "failed",
-              "duration": 21262000000,
-              "error_message": "AssertionError: Timed out retrying: expected '<span.user-display>' to be 'visible'\n\nThis element `<span.user-display>` is not visible because it has CSS property: `position: fixed` and it's being covered by another element:\n\n`<div class=\"ui page modals dimmer transition visible active\" style=\"display: flex !important;\">...</div>`\n    at Context.eval (https://ui.cogmento.com/__cypress/tests?p=cypress\\support\\index.js:58:53)"
+              "status": "passed",
+              "duration": 5115000000
             }
           },
           {
@@ -108,7 +107,8 @@
             "line": 14,
             "name": "user search for created contact",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 928000000
             }
           },
           {
@@ -117,7 +117,8 @@
             "line": 15,
             "name": "user delete created contact",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 12846000000
             }
           },
           {
@@ -126,7 +127,8 @@
             "line": 16,
             "name": "user should not be able to see deleted contact",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 4896000000
             }
           }
         ]

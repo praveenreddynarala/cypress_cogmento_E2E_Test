@@ -1,0 +1,243 @@
+[
+  {
+    "description": "    Feature Description",
+    "keyword": "Feature",
+    "name": "Open CRM Events",
+    "line": 1,
+    "id": "open-crm-events",
+    "tags": [],
+    "uri": "events.feature",
+    "elements": [
+      {
+        "id": "open-crm-events;create-new-event",
+        "keyword": "Scenario",
+        "line": 9,
+        "name": "Create new Event",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "user login to applications",
+            "result": {
+              "status": "passed",
+              "duration": 4884000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "user navigate to \"calendar\" screen",
+            "result": {
+              "status": "passed",
+              "duration": 1768000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "user navigate to \"calendar/new\" screen",
+            "result": {
+              "status": "passed",
+              "duration": 1388000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 11,
+            "name": "user create new event",
+            "result": {
+              "status": "passed",
+              "duration": 4229000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 12,
+            "name": "user should be in a position to see created event",
+            "result": {
+              "status": "passed",
+              "duration": 1535000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "open-crm-events;edit-created-event",
+        "keyword": "Scenario",
+        "line": 14,
+        "name": "Edit created Event",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "user login to applications",
+            "result": {
+              "status": "passed",
+              "duration": 4029000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "user navigate to \"calendar\" screen",
+            "result": {
+              "status": "passed",
+              "duration": 2307000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 15,
+            "name": "user navigate to \"calendar/new\" screen",
+            "result": {
+              "status": "passed",
+              "duration": 1553000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 16,
+            "name": "user create new event",
+            "result": {
+              "status": "passed",
+              "duration": 3466000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 17,
+            "name": "user edit created event",
+            "result": {
+              "status": "passed",
+              "duration": 1931000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "open-crm-events;delete-created-event",
+        "keyword": "Scenario",
+        "line": 19,
+        "name": "Delete created event",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "user login to applications",
+            "result": {
+              "status": "passed",
+              "duration": 3597000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "user navigate to \"calendar\" screen",
+            "result": {
+              "status": "passed",
+              "duration": 2171000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 20,
+            "name": "user navigate to \"calendar/new\" screen",
+            "result": {
+              "status": "passed",
+              "duration": 1646000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 21,
+            "name": "user create new event",
+            "result": {
+              "status": "passed",
+              "duration": 3758000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 22,
+            "name": "user delete created event",
+            "result": {
+              "status": "passed",
+              "duration": 2667000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "open-crm-events;update-manage-calendar",
+        "keyword": "Scenario",
+        "line": 30,
+        "name": "Update Manage Calendar",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "user login to applications",
+            "result": {
+              "status": "passed",
+              "duration": 4876000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "user navigate to \"calendar\" screen",
+            "result": {
+              "status": "passed",
+              "duration": 1308000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 25,
+            "name": "user update manages calendar \"Praveen Narala <praveenreddy.narala@gmail.com> 1\"",
+            "result": {
+              "status": "passed",
+              "duration": 2649000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 26,
+            "name": "user should be able to see updated manage calendar \"Praveen Narala <praveenreddy.narala@gmail.com> 1\"",
+            "result": {
+              "status": "passed",
+              "duration": 65000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
