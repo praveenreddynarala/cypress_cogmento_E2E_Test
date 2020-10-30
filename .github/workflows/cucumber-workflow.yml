@@ -42,5 +42,5 @@ jobs:
           path: cypress/videos
       - uses: actions/upload-artifact@v2
         with:
-          name: cucumber-json-reports
+          name: cucumberJson
           path: cypress/cucumber-json
