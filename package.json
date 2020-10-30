@@ -26,7 +26,7 @@
       "generate": true,
       "outputFolder": "cypress/cucumber-json",
       "filePrefix": "",
-      "fileSuffix": ".cucumber"
+      "fileSuffix": "_cucumber"
     }
   }
 }
