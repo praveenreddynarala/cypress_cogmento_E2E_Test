@@ -20,6 +20,8 @@ jobs:
 
       - name: Cypress run
         uses: cypress-io/github-action@v1
+        with:
+          browser: chrome 
         
       # after the test run completes
       # store videos and any screenshots
