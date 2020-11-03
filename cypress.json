@@ -1,5 +1,5 @@
 {
-  "baseUrl": "https://ui.cogmento.com",
+  "baseUrl": "https://reqres.in/",
   "projectId": "wye8d5",
   "pageLoadTimeout": 100000,
   "defaultCommandTimeout": 10000
