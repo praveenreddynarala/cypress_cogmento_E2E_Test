@@ -1,10 +1,14 @@
 
+/**
+ * Update "baseUrl": "https://reqres.in/" in cypress.json fiel before run this test file
+ */
+//#region GET positive tests
 describe('Reqres.in API - Get Call Requests', () => {
     
     beforeEach(() => {
         cy.request({
             method: 'GET',
-            url: '/api/users?page=2', 
+            url:  Cypress.env('reqres_url')+'/api/users?page=2', 
             headers: {
                 'accept': 'application/json'
             }
@@ -89,7 +93,6 @@ describe('Reqres.in API - Get Call Requests', () => {
 
     it('Check actual response body againist expected json response', () => {
         cy.fixture('get_reqres_response.json').as('actual_response')
-        
         let actual_resp
         cy.get('@actual_response')
         .then((actual) => {
@@ -100,6 +103,53 @@ describe('Reqres.in API - Get Call Requests', () => {
         cy.get('@users').its('body').then(expected_resp => {
             cy.wrap(expected_resp).should('deep.equal', actual_resp)
         })
-        
     })
 })
+//#endregion
+
+//#region GET negative tests
+describe('GET negative calls', () => {
+    it('Single user not found', () => {
+        cy.request({
+            method: 'GET',
+            url: Cypress.env('reqres_url')+'/api/users/23', 
+            headers: {
+                'accept': 'application/json'
+            },
+            failOnStatusCode:false //fail on status code if we remove this option or set to true
+        }).then(($response) => {
+            expect($response.status).equal(404)
+        })
+    })
+
+    it('Single resource not found', () => {
+        cy.request({
+            method: 'GET',
+            url: '/api/unknown/23', 
+            headers: {
+                'accept': 'application/json'
+            },
+            failOnStatusCode:false //fail on status code if we remove this option or set to true
+        }).then(($response) => {
+            expect($response.status).equal(404)
+        })
+    })
+})
+//#endregion
+
+//#region 
+describe('Check delayed response', () => {
+    it('Delay Response', () => {
+        cy.request({
+            method: 'GET',
+            url: Cypress.env('reqres_url')+'/api/users?delay=3', 
+            headers: {
+                'accept': 'application/json'
+            },
+            failOnStatusCode:false //fail on status code if we remove this option or set to true
+        }).then(($response) => {
+            expect($response.status).equal(200)
+        })
+    })
+})
+//#endregion
