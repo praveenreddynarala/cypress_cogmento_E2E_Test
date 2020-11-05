@@ -11,7 +11,6 @@ describe('GET calls using Barear Authentication Tests', () => {
                 bearer: Cypress.env('bearer_token')
             },
             headers:{
-                // Authorization: `Bearer ${Cypress.env('bearer_token')}`,
                 'Content-type':'application/json'
             }
         }).as('request')
@@ -20,6 +19,16 @@ describe('GET calls using Barear Authentication Tests', () => {
     it('Check status code for all users', () => {
         cy.get('@request')
         .its('status').should('equal', 200)
+    })
+
+    it('Check status code for all users', () => {
+        cy.get('@request').then(response => {
+            cy.writeFile('cypress/fixtures/save_responses/seved_response.json', response.body)
+            cy.readFile('cypress/fixtures/save_responses/seved_response.json').then(json_data => {
+                cy.log(json_data.code)
+                expect(json_data.code).equal(200)
+            })
+        })
     })
 })
 
@@ -30,7 +39,7 @@ describe('Optional Query Parameter tests', () => {
             method:'GET',
             url: Cypress.env('gorest_url')+'/public-api/users',
             qs:{
-                'name':'Goswamee Acharya'
+                'id':'1'
             },
             headers:{
                 Authorization: `Bearer ${Cypress.env('bearer_token')}`,
@@ -43,7 +52,8 @@ describe('Optional Query Parameter tests', () => {
         cy.get('@request1')
         .its('body')
         .its('data').then(response => {
-            expect(response[0].name).equal('Goswamee Acharya')
+            cy.log(JSON.stringify(response))
+            expect(response[0].email).equal('bhagwanti_gowda@waelchi.org')
         })
     })
 })
