@@ -496,8 +496,11 @@ First API Test:
             },
 
         4. Time to run the server. Write the command from terminal like below
-
+            :VS Code - Terminal:
             $npm run json:server --watch cypress\fixtures\mock_responses\db.json //File path
+            (OR)
+            :Run from project Folder:
+            C:\Work\Cypress\CypressProject>npm run json:server --watch cypress\fixtures\mock_responses\db.json
 
             db.json:
 
@@ -650,7 +653,11 @@ First API Test:
                 }
 
             5. Run command like below to run jason-server to load all mocked json files as end points
+                :VS Code - Terminal:
                 $node cypress/support/mocks/server.js (OR) $npm run js:server
+                (OR)
+                :Project Folder:
+                C:\Work\Cypress\CypressProject>npm run js:server
 
         Mocking Data using Faker:
         faker.js is a JavaScript library for generating fake data. Fake data is useful when building and testing our application. The faker.js can generate fake data for various areas, including address, commerce, company, date, finance, image, random, or name.
