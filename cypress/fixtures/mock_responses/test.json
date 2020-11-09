@@ -1,0 +1,20 @@
+{
+    "items": [
+      {
+        "id": 534,
+        "type": "textcontent",
+        "icon": "http://exampple.com/1png",
+        "title": "John",
+        "description": "Description",
+        "url": "http://example.net/project/doSomething"
+      },
+      {
+        "id": 234,
+        "type": "textcontent",
+        "icon": "http://exampple.com/2png",
+        "title": "Smith",
+        "description": "Description2",
+        "url": "http://example.net/project/doSomething2"
+      }
+    ]
+  }

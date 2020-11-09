@@ -1,0 +1,96 @@
+{
+  "getCurrentCartItems": {
+    "cartItemList": [
+      {
+        "id": 169,
+        "cartId": 44,
+        "productId": 123456,
+        "name": "test product",
+        "createdBy": "user_1",
+        "createdDate": 1573673984000,
+        "status": {
+          "id": 1,
+          "description": "Not yet purchased",
+          "label": "Purchase Pending"
+        }
+      },
+      {
+        "id": 32,
+        "cartId": 44,
+        "productId": 123457,
+        "name": "test product 2",
+        "createdBy": "user_1",
+        "createdDate": 1573494425000,
+        "status": {
+          "id": 1,
+          "description": "Not yet purchased",
+          "label": "Purchase Pending"
+        },
+        "statusId": 1
+      },
+      {
+        "id": 85,
+        "cartId": 44,
+        "productId": 123458,
+        "name": "test product 3",
+        "createdBy": "user_1",
+        "createdDate": 1573489773000,
+        "status": {
+          "id": 1,
+          "description": "Not yet purchased",
+          "label": "Purchase Pending"
+        },
+        "statusId": 1
+      }
+    ]
+  },
+  "getEmptyCart": {
+    "cartItemList": []
+  },
+  "getPreviouslyOrderedCartItems": {
+    "cartItemList": [
+      {
+        "id": 254,
+        "cartId": 44,
+        "productId": 234567,
+        "name": "test product 4",
+        "createdBy": "user_1",
+        "createdDate": 1573673984000,
+        "purchaseDate": 1590938386000,
+        "status": {
+          "id": 2,
+          "description": "Purchased not yet shipped",
+          "label": "Not yet shipped"
+        }
+      },
+      {
+        "id": 315,
+        "cartId": 44,
+        "productId": 234568,
+        "name": "test product 5",
+        "createdBy": "user_1",
+        "createdDate": 1574705313000,
+        "purchaseDate": 15787658336000,
+        "status": {
+          "id": 3,
+          "description": "Purchased and shipped",
+          "label": "Shipping"
+        }
+      },
+      {
+        "id": 78,
+        "cartId": 44,
+        "productId": 234569,
+        "name": "test product 6",
+        "createdBy": "user_1",
+        "createdDate": 1573489773000,
+        "purchaseDate": 1578895836000,
+        "status": {
+          "id": 4,
+          "description": "Delivered",
+          "label": "Delivered"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Jonas",
+      "surname": "T."
+    },
+    {
+      "id": 2,
+      "name": "Chris",
+      "surname": "B."
+    },
+    {
+      "id": 3,
+      "name": "Juliana",
+      "surname": "Crain"
+    },
+    {
+      "id": 4,
+      "name": "Caty",
+      "surname": "B."
+    },
+    {
+      "id": 5
+    },
+    {
+      "name": "Praveen",
+      "surname": "N.",
+      "id": 8
+    },
+    {
+      "name": "Praveen",
+      "surname": "Narala",
+      "id": 9
+    },
+    {
+      "name": "Praveen",
+      "surname": "Narala",
+      "id": 11
+    },
+    {
+      "name": "Praveen",
+      "surname": "Narala",
+      "id": 12
+    },
+    {
+      "name": "Praveen",
+      "surname": "Narala",
+      "id": 13
+    }
+  ],
+  "cartItemList": [
+    {
+      "id": 169,
+      "cartId": 44,
+      "productId": 123456,
+      "name": "test product",
+      "createdBy": "user_1",
+      "createdDate": 1573673984000,
+      "status": {
+        "id": 1,
+        "description": "Not yet purchased",
+        "label": "Purchase Pending"
+      }
+    },
+    {
+      "id": 32,
+      "cartId": 44,
+      "productId": 123457,
+      "name": "test product 2",
+      "createdBy": "user_1",
+      "createdDate": 1573494425000,
+      "status": {
+        "id": 1,
+        "description": "Not yet purchased",
+        "label": "Purchase Pending"
+      },
+      "statusId": 1
+    },
+    {
+      "id": 85,
+      "cartId": 44,
+      "productId": 123458,
+      "name": "test product 3",
+      "createdBy": "user_1",
+      "createdDate": 1573489773000,
+      "status": {
+        "id": 1,
+        "description": "Not yet purchased",
+        "label": "Purchase Pending"
+      },
+      "statusId": 1
+    }
+  ]
+}
