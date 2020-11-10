@@ -20,11 +20,11 @@ jobs:
 
         #Run mock server
       - name: npm run js:server with env
-        uses: ./
+        uses: cypress-io/github-action@v1
 
         #Execute API Tests
       - name: Cypress run with env
-        uses: ./
+        uses: cypress-io/github-action@v1
         if: always()
         with:
           record: true
