@@ -20,5 +20,7 @@ jobs:
 
         #Run mock server
       - name: npm install -g json-server
-        uses: cypress-io/github-action@v1
+        run: |
+          npm install -g json-server --save
+          npm install i faker --save
         timeout-minutes: 10
