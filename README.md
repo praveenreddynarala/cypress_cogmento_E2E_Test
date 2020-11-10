@@ -106,7 +106,7 @@ To run your first REST API test using Cypress, follow these steps:
             })
         })
 
-**Environment Variables:**
+## Environment Variables:
 
 In real time, we test API's in different environments like DEV, QA, Staging and Production. It means, URL of API's will vary and can't keep it in 'cypress.json' file anymore. In-oder to overcome, we should use concept called Environment Variables. 
     
@@ -136,7 +136,7 @@ Environment variables are useful when:
                 "bearer_token": "bearer_token"
             }
 
-Sample GET request using Cypress Environments:
+**Sample GET request using Cypress Environments:**
 
             describe('Reqres.in API - Get Call Requests', () => {
                 beforeEach(() => {
@@ -156,7 +156,7 @@ Sample GET request using Cypress Environments:
                 })
             })
 
-Get request using Basic Authentication:
+## Get request using Basic Authentication:
 
             describe('GET calls using Basic Authentication Tests', () => {
                 beforeEach(() => {                                      //BeforeEach Tests
@@ -182,7 +182,7 @@ Get request using Basic Authentication:
                 })
             })
 
-Get Request using BAERER TOKEN:
+## Get Request using BAERER TOKEN:
 
         describe('GET calls using Barear Authentication Tests', () => {
             beforeEach(() => {                                          //BeforeEach Test
@@ -204,11 +204,11 @@ Get Request using BAERER TOKEN:
             })
         })
 
-Reading and Writing Files in API Requests:
+## Reading and Writing Files in API Requests:
 
 Write API response to JSON file and read it later to validate expected response.
 
-Note: use above Request to make a GET request.
+**Note:** use above Request to make a GET request.
         
         it('Check status code for all users', () => {
             cy.get('@request').then(response => {
@@ -220,7 +220,7 @@ Note: use above Request to make a GET request.
             })
         })
 
-Passing Query Parameters:
+## Passing Query Parameters:
 
 Make a request using query parameters using 'qs' parameter in Request method
 
@@ -239,7 +239,7 @@ Make a request using query parameters using 'qs' parameter in Request method
             })
         })
     
-Get length of a response:
+**Get length of a response:**
         
         it('Get length of the response body', () => {
             cy.get('@users')
@@ -249,14 +249,14 @@ Get length of a response:
             })
         })
 
-Check response body should not be null
+**Check response body should not be null**
 
         it('Expect response body should not be null', () => {
             cy.get('@users')
             .its('body').should('not.be.null')              //Validation
         })
 
-Different validation on Response body:
+**Different validation on Response body:**
 
         it('Check response body', () => {
             cy.get('@users').then(($response) => {
@@ -270,7 +270,7 @@ Different validation on Response body:
             })
         })
 
-Convert Response to JSON String:
+**Convert Response to JSON String:**
 
         it('Print complete response body as JSON string', () => {
             cy.get('@users')
@@ -279,7 +279,7 @@ Convert Response to JSON String:
             })
         })
     
-Validate JSON to JSON response:
+**Validate JSON to JSON response:**
 
         it('Check actual response body againist expected json response', () => {
             cy.fixture('get_reqres_response.json').as('actual_response')        //Reading expected response from JSON file
@@ -295,7 +295,7 @@ Validate JSON to JSON response:
             })
         })
 
-What is failOnStatusCode?:
+## What is failOnStatusCode?:
 
 'failOnStatusCode' is an opetiona parameter in Request method. Anytime if API return status code starts with 4xx, Cypress will throw exception and it does not retun failed response status and body. To get failed response body, we should use 'failOnStatusCode' as a parameter in Request body as pass 'false'. By default 'failOnStatusCode' is set to 'true' by Cypress.
 
@@ -312,7 +312,7 @@ What is failOnStatusCode?:
             })
         })
     
-POST Requests:
+## POST Requests:
 
         describe('POST requests', () => {
             beforeEach(() => {                                      //BeforeEach call
@@ -329,7 +329,7 @@ POST Requests:
                 }).as('request')
             })
 
-Check POST request status:
+**Check POST request status:**
 
         it('Check post status', () => {
             cy.get('@request').then(($response) => {
@@ -339,7 +339,7 @@ Check POST request status:
             })
         })
 
-Check POST response body:
+**Check POST response body:**
 
         it('Check post response body', () => {
             cy.get('@request')
@@ -349,7 +349,7 @@ Check POST response body:
             })
         })
     
-Check missing required parameter:
+**Check missing required parameter:**
 
         describe('Missing required data from POST body checks', () => {
             it('Missing required data Password filed from POST body checks', () => {
@@ -369,7 +369,7 @@ Check missing required parameter:
             })
         })
     
-PATCH Request:
+## PATCH Request:
 
         describe('Patch Update Calls', () => {
     
@@ -397,7 +397,7 @@ PATCH Request:
                 })
             })
 
-Check Updated record:
+**Check Updated record:**
 
             it('Check updated record using Should command', () => {
                 cy.get('@request').its('body').should('include', {
@@ -406,7 +406,7 @@ Check Updated record:
                 })
             })
 
-PUT Calls:
+## PUT Calls:
 
         describe('Patch Update Calls', () => {
             beforeEach('Update record before each test', () => {        //Before Each Test Call
@@ -423,7 +423,7 @@ PUT Calls:
                 }).as('request')
             })
             
-Check Status:
+**Check Status:**
 
             it('Check status', () => {
                 cy.get('@request').then(response => {
@@ -450,7 +450,7 @@ Check Status:
             })
         })
 
-Test Data Management:
+## Test Data Management:
     
 In API testing, Test Data takes a larger potion in validating business logic. Unlike UI, API testing will be performed using different data sets to ensure API business login works as per customer/end user expectation. And it give faster feedback to development team.
 
@@ -459,11 +459,11 @@ Here I am giving couple of example on how effectively we can perform API testing
     1. Fixtures/Static files
     2. Mocking HTTP Calls in Cypress End-to-End Tests
 
-Fixtures/Static files:
+**Fixtures/Static files:**
     
 Unlike other API tools, Cypress supports data driven testing more effectively and hassle free using fixtures. Using fixtures, We can store test data in JSON file in cypress -> fixtures folder and read files in test files with no heavy code.
 
-examples.json file:
+_examples.json file:_
         
         {
             "userName": "user_name",
@@ -473,13 +473,13 @@ examples.json file:
             "body": "Fixtures are a great way to mock data for responses to routes"
         }
     
-Reading examples file in tests:
+_Reading examples file in tests:_
 
         cy.fixture('examples.json').as('test_data')
         (OR)
         fixture:examples.json in Requests
 
-Mocking / Facking HTTP Calls in Cypress End-to-End Tests:
+## Mocking / Facking HTTP Calls in Cypress End-to-End Tests:
     
 When we work in SHIFT-LEFT/ In-Sprint model, Dev and QA team must start testing at early stage to get quick feedback. Hence, it helps in delivering the features to production with great quality. Moreover, it speedup the release process. Also, it ensure quality is more of a Team activity.
 
@@ -496,29 +496,30 @@ We will perform below steps to do this activity.
     2. Create new folder called (mock) and place all mocked response data files
     3. Nedd json-server plugin
 
-    1. Install json-server:
+**Install json-server:**
     
         $npm install jason-server --save -dev
     
     It will take some time to install. Once it installed you can see some other files/code added to your folder.
         
-    2. Create a new file & name it 'db.json' in fixtures (Note: we can create any number for fake JSON files)
+**Create a new file & name it 'db.json' in fixtures** (Note: we can create any number for fake JSON files)
         Put the JSON data you want to retrieve in your apps. I am pasting this data in db.json
         
-    3. In package.json under “scripts” add below line/statement
+**In package.json under “scripts” add below line/statement**
             
         "scripts": {
             "json:server": "json-server",
         },
 
-    4. Time to run the server. Write the command from terminal like below
-        :VS Code - Terminal:
+**Time to run the server. Write the command from terminal like below**
+
+        _:VS Code - Terminal:_
         $npm run json:server --watch cypress\fixtures\mock_responses\db.json //File path
         (OR)
-        :Run from project Folder:
+        _:Run from project Folder:_
         C:\Work\Cypress\CypressProject>npm run json:server --watch cypress\fixtures\mock_responses\db.json
 
-        db.json:
+        _db.json:_
 
             {
                 "users": [
@@ -616,13 +617,13 @@ We will perform below steps to do this activity.
                 ]
             }
 
-    5. The server should start on http://localhost:3000. Server uses 3000 as default port
+**The server should start on http://localhost:3000. Server uses 3000 as default port**
 
-    6. Once open user in browser, it will show all end points for mocked response
+**Once open user in browser, it will show all end points for mocked response**
         
         Ex. /users & /cartItems
         
-Note: These end points will work for all HTTP verbs/methods 'GET', 'PUT', 'POST', 'PATCH' and 'DELETE'
+**Note:** These end points will work for all HTTP verbs/methods 'GET', 'PUT', 'POST', 'PATCH' and 'DELETE'
 Some sample end ponts (base url: http://localhost:3000)
 
     1. /users -> Get all users
@@ -630,7 +631,7 @@ Some sample end ponts (base url: http://localhost:3000)
     3. /users?q=J -> Get all matched record with name starts with character 'J'
     4. /users?_sort=name&_order=desc -> Sort respone using name
 
-Working with multiple Mock files:
+## Working with multiple Mock files:
 
 Above we have seen example of creating mock service for db.json file. But in real time, we will be interacting with multiple API services, so we may require multiple mocked json files to be loaded to perform Integration or e2e testing. 
 
@@ -678,15 +679,15 @@ It is easy to implement. Kinldy find below staps we should follow.
         :Project Folder:
         C:\Work\Cypress\CypressProject>npm run js:server
 
-Mocking Data using Faker:
+## Mocking Data using Faker:
 
 faker.js is a JavaScript library for generating fake data. Fake data is useful when building and testing our application. The faker.js can generate fake data for various areas, including address, commerce, company, date, finance, image, random, or name.
 
-Setting up faker.js:
+**Setting up faker.js:**
         
         $npm install faker --save
         
-Serving fake data with JSON Server:
+**Serving fake data with JSON Server:**
 
         1. Create new file 'faker_generate_users.js' in cypress/support/mock folder
         2. Add add code as below..
@@ -718,10 +719,13 @@ Serving fake data with JSON Server:
 
             fs.writeFileSync('cypress/fixtures/mock_responses/data.json', JSON.stringify(dataObj, null, '\t'));
 
-        3. Run faker_generate_users.js as below
+**Run faker_generate_users.js as below**
+
             $node cypress/support/mocks/faker_generate_users.js 
 
-        4. Fake data will be generated dynamically '@cypress\fixtures\mock_responses\data.json'
+**Fake data will be generated dynamically in below location** '
+            
+            @cypress\fixtures\mock_responses\data.json'
 
 
 
