@@ -19,12 +19,12 @@ jobs:
         uses: actions/checkout@v1
 
         #Run mock server
-      - name: npm run js:server
-        uses: cypress-io/github-action@v1
+      - name: npm run js:server with env
+        uses: ./
 
         #Execute API Tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v1
+      - name: Cypress run with env
+        uses: ./
         if: always()
         with:
           record: true
@@ -37,6 +37,13 @@ jobs:
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           #browser: chrome 
+          CYPRESS_reqres_url: "https://reqres.in"
+          CYPRESS_gorest_url: "https://gorest.co.in"
+          CYPRESS_github_url: "https://api.github.com"
+          CYPRESS_auth_username: ${{ secrets.AUTH_USERNAME }}
+          CYPRESS_auth_password: ${{ secrets.AUTH_PASSWORD }}
+          CYPRESS_bearer_token: ${{ secrets.GOREST_TOKEN }}
+          CYPRESS_github_bearer_token: ${{ secrets.GTH_TOKEN }}  
         
       # after the test run completes
       # store videos and any screenshots
