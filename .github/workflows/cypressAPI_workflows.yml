@@ -21,6 +21,6 @@ jobs:
         #Run mock server
       - name: npm install -g json-server
         run: |
-          npm install -g json-server --save
-          npm install i faker --save
+          npm install -g json-server
+          npm install i faker
         timeout-minutes: 10
