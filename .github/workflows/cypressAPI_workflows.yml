@@ -19,12 +19,12 @@ jobs:
         uses: actions/checkout@v1
 
         #Run mock server
-      - name: npm install -g json-server
-        run: |
-          npm install -g json-server
-          npm install i faker
-          npm run js:server
-        timeout-minutes: 5
+      #- name: npm install -g json-server
+      #  run: |
+      #    npm install -g json-server
+      #    npm install i faker
+      #    npm run js:server
+      #  timeout-minutes: 5
       
       - name: Cypress run with env
         uses: cypress-io/github-action@v1
@@ -47,7 +47,8 @@ jobs:
           CYPRESS_auth_username: ${{ secrets.AUTH_USERNAME }}
           CYPRESS_auth_password: ${{ secrets.AUTH_PASSWORD }}
           CYPRESS_bearer_token: ${{ secrets.GOREST_TOKEN }}
-          CYPRESS_github_bearer_token: ${{ secrets.GTH_TOKEN }}  
+          CYPRESS_github_bearer_token: ${{ secrets.GTH_TOKEN }}
+          CYPRESS_mock_url: ${{ secrets.MOCK_TEST_ENV_URL }}  
         
       # after the test run completes
       # store videos and any screenshots
