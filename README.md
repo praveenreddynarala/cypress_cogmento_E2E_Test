@@ -8,6 +8,8 @@ When it comes to using Cypress, many users think about front-end testing. But we
 
 In this paper, we will work with REST API - he REST acronym comes from the English words Representational State Transfer. It is a software architectural style in which we work with resources.
 
+![Screenshot](Cypress_RestAPI_Architecture.PNG)
+
 ## REST API testing - requirements:
 
 So let’s see what are we going to need to run our REST API test with Cypress. Make sure to:
