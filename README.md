@@ -1,4 +1,4 @@
-                            Complete Guide to RestAPI Testing and Mocking Technics in Cypress
+# Complete Guide to RestAPI Testing and Mocking in Cypress
 
 We like to pretend there are two adjointed end-to-end test types: API and browser automation tests. And that the tools used are very different. Most of the cases E2E tests we perform either in API or browser (client interface); but not mixing by both in signle solution. Yet, a good E2E automation test runner, in my opinion, should be really good at working with a remote server API via HTTP. After all, this is what every useful website does. Every website exchanges data with remote servers through HTTP requests.
 
@@ -8,14 +8,15 @@ When it comes to using Cypress, many users think about front-end testing. But we
 
 In this paper, we will work with REST API - he REST acronym comes from the English words Representational State Transfer. It is a software architectural style in which we work with resources.
 
-REST API testing - requirements:
+## REST API testing - requirements:
+
 So let’s see what are we going to need to run our REST API test with Cypress. Make sure to:
 
     1. Install Node.js
     2. Install npm
     3. Install Visual Studio Code
 
-Setting up the project:
+## Setting up the project:
 
     1. mkdir cypress-api-tests -> Create directory
     2. cd cypress-api-tests -> Go to created folder
@@ -23,23 +24,24 @@ Setting up the project:
     4. npm i cypress -> Now install Cypress
     5. npx cypress open -> Run Cypress
 
-Note: Cypress will create forur folders fixtures, plugins, support, and integration. Fixture - where we maintain Rest API response mock / test data in json format. Integration - where we write our tests. By default In integration one there are some example tests, we can delete them all.
+**Note:** Cypress will create forur folders fixtures, plugins, support, and integration. Fixture - where we maintain Rest API response mock / test data in json format. Integration - where we write our tests. By default In integration one there are some example tests, we can delete them all.
 
-Open Project in Visual Studio Code:
+## Open Project in Visual Studio Code:
     
     1. cmd in above created project folder
     2. Type 'code .' and press {ENTER} key
 
-First API Test:
+## First API Test:
+
 To run your first REST API test using Cypress, follow these steps:
 
-    1. Go to cypress.json file and add the base URL that will be used in our test
+**Go to cypress.json file and add the base URL that will be used in our test**
         
     {
         "baseURL": "https://gorest.co.in"
     }
 
-    2. Make a GET request call in beforeEach() hook. It will be executed before each test execution..
+**Make a GET request call in beforeEach() hook. It will be executed before each test execution..**
     
     beforeEach(() => {
         cy.request({
@@ -51,7 +53,7 @@ To run your first REST API test using Cypress, follow these steps:
         }).as('users')
     })
 
-Note: Below listed some of are Request options
+**Below listed some of are Request options**
         
         1. method -> it expects HTTP Verbs / Methos (GET, POST, PUT, DELETE, PATCH, HEAD..etc.)
         2. url: URL+End Point
@@ -59,9 +61,9 @@ Note: Below listed some of are Request options
         4. head: Takes header values (accept: 'application/json')
         5. body: Request body for creating/updating resource
 
-Note: storing the request in alias using 'as' method. Example: .as('@users')
+**Note:** storing the request in alias using 'as' method. Example: .as('@users')
 
-    3. Check GET respone Status Code:
+**Check GET respone Status Code:**
 
         it('Check response code', () => {
             cy.get('@users') //calling alias
@@ -69,7 +71,7 @@ Note: storing the request in alias using 'as' method. Example: .as('@users')
             .should('equal', 200)
         })
 
-    4. Check response content type:
+**Check response content type:**
 
         it('Check its conetent type',  () => {
             cy.get('@users')
@@ -78,7 +80,7 @@ Note: storing the request in alias using 'as' method. Example: .as('@users')
             .should('include', 'application/json; charset=utf-8')
         })
 
-    5. Log length of the response body:
+**Log length of the response body:**
 
         it('Get length of the response body', () => {
             cy.get('@users')
@@ -88,7 +90,7 @@ Note: storing the request in alias using 'as' method. Example: .as('@users')
             })
         })
 
-    6. Match actual json response with expected json response using 'deep.equals'
+**Match actual json response with expected json response using 'deep.equals'**
 
         it('Check actual response body againist expected json response', () => {
             cy.fixture('get_reqres_response.json').as('actual_response')
@@ -104,7 +106,7 @@ Note: storing the request in alias using 'as' method. Example: .as('@users')
             })
         })
 
-Environment Variables:
+**Environment Variables:**
 
 In real time, we test API's in different environments like DEV, QA, Staging and Production. It means, URL of API's will vary and can't keep it in 'cypress.json' file anymore. In-oder to overcome, we should use concept called Environment Variables. 
     
@@ -115,12 +117,12 @@ Environment variables are useful when:
     2. Values are different across multiple environments: (dev, staging, qa, prod)
     3. Values change frequently and are highly dynamic.
     
-Please find below steps to setup environment variables.
+**Please find below steps to setup environment variables.**
 
     1. Create 'cypress.env.json' file at project root folder.
     2. Access envrionment variables in any java script file using 'Cypress.env('Variable-Key-Name')'
 
-Example: cypress.env.json
+**Example: cypress.env.json**
 
             {
                 "dev_url": "https://dev.in",
