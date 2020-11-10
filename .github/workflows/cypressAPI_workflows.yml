@@ -19,8 +19,9 @@ jobs:
         uses: actions/checkout@v1
 
         #Run mock server
-      - name: npm run js:server with env
+      - name: npm install -g json-server and npm run js:server
         uses: cypress-io/github-action@v1
+        timeout-minutes: 10
 
         #Execute API Tests
       - name: Cypress run with env
