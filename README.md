@@ -637,10 +637,11 @@ Above we have seen example of creating mock service for db.json file. But in rea
 
 It is easy to implement. Kinldy find below staps we should follow.
 
-    1. Create multiple mocked JSON files in fixture folder. Refer previous example.
+**Create multiple mocked JSON files in fixture folder. Refer previous example.**
+
         Example files: cart_mock_data.json, db.json, test.json
 
-    2. create db.json file in cypress/support/mock folder. And add code like below..
+**create db.json file in cypress/support/mock folder. And add code like below..**
 
         module.exports = () => {
             return Object.assign({},
@@ -650,7 +651,7 @@ It is easy to implement. Kinldy find below staps we should follow.
                 );
             }
     
-    3. Create server.js file inside cypress/support/mock folder. And add below code..
+**Create server.js file inside cypress/support/mock folder. And add below code..**
 
         const jsonServer = require('json-server');
         const server = jsonServer.create();
@@ -665,13 +666,13 @@ It is easy to implement. Kinldy find below staps we should follow.
             console.log('JSON Server is running')
         })
 
-    4. Call server.js file in package.json file like below..
+**Call server.js file in package.json file like below..**
         
         "scripts": {
             "js:server": "node cypress/support/mocks/server.js"
         }
 
-    5. Run command like below to run jason-server to load all mocked json files as end points
+**Run command like below to run jason-server to load all mocked json files as end points**
         
         :VS Code - Terminal:
         $node cypress/support/mocks/server.js (OR) $npm run js:server
