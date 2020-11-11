@@ -1,18 +1,14 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
-
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
 on:
   push:
     branches: [ cypressAPI ]
   pull_request:
     branches: [ cypressAPI ]
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   cypress-run:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
     env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -25,10 +21,10 @@ jobs:
           CYPRESS_bearer_token: ${{ secrets.GOREST_TOKEN }}
           CYPRESS_github_bearer_token: ${{ secrets.GTH_TOKEN }}
           CYPRESS_mock_url: ${{ secrets.MOCK_TEST_ENV_URL }} 
-    runs-on: ubuntu-latest
+    
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
 
         #Run mock server
       #- name: npm install -g json-server
@@ -37,22 +33,24 @@ jobs:
       #    npm install i faker
       #    npm run js:server
       #  timeout-minutes: 5
+      - name: Get yarn cache
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+    
+      - name: Install dependencies
+        uses: cypress-io/github-action@v2
+        with:
+          runTests: false
       
       - name: Cypress run with env
-        uses: cypress-io/github-action@v1
+        uses: cypress-io/github-action@v2
+        continue-on-error: true
         if: always()
         with:
+          install: false
           spec: cypress/integration/restAPI/**/*
           record: true
           browser: chrome
-          group: 'Actions example'
-        
-      # after the test run completes
-      # store videos and any screenshots
-      # NOTE: screenshots will be generated only if E2E test failed
-      # thus we store screenshots only on failures
-      # Alternative: create and commit an empty cypress/screenshots folder
-      # to always have something to upload
       - uses: actions/upload-artifact@v2
         if: failure()
         with:
@@ -60,7 +58,7 @@ jobs:
           path: cypress/screenshots
       # Test run video was always captured, so this action uses "always()" condition
       - uses: actions/upload-artifact@v2
-        if: always()
+        if: failure()
         with:
           name: cypress-videos
           path: cypress/videos
