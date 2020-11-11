@@ -29,3 +29,29 @@ Run tests specifying a single test file to run instead of all tests:
 
 Run tests specifying multiple test files to run:
     1. $ cypress run --spec "cypress/integration/examples/actions.spec.js,cypress/integration/examples/files.spec.js"
+
+Mochaawesome Report:
+    $npm install --dev mocha mochawesome mochawesome-merge
+
+    Add below code in cypress.json file for report generation
+
+        "reporterOptions": {
+        "reportDir": "cypress/reports/mochawesome-report",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "charts": true,
+        "timestamp": "mmddyyyy_HHMMss"
+    },
+    "video": false 
+
+Merge all reports into single HTML report:
+Add below code in package.json file in 'scripts'
+
+    "merge": "mochawesome-merge cypress/reports/mochawesome-report/*.json > cypress/reports/output.json",
+    "generate_mochaawesome_report": "marge  cypress/reports/output.json --reportDir ./ --inline",
+    "mochawesome_final_report": "npm run merge && npm run generate_mochaawesome_report"
+
+Then run Tests using cypress
+Then run below command to generate single html report:
+$npm run mochawesome_final_report

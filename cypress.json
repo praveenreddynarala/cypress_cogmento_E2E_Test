@@ -1,5 +1,15 @@
 {
   "projectId": "wye8d5",
   "pageLoadTimeout": 100000,
-  "defaultCommandTimeout": 10000
+  "defaultCommandTimeout": 10000,
+  "reporter": "mochawesome",
+  "reporterOptions": {
+      "reportDir": "cypress/reports/mochawesome-report",
+      "overwrite": false,
+      "html": true,
+      "json": true,
+      "charts": true,
+      "timestamp": "mmddyyyy_HHMMss"
+   },
+   "video": true 
 }

@@ -8,7 +8,15 @@
     "js:server": "node cypress/support/mocks/server.js",
     "cypress:open": "cypress run",
     "tests": "cypress run",
-    "cy:run": "cypress run"
+    "cy:run": "cypress run",
+    "cy:verify": "cypress verify",
+    "cy:info": "cypress info",
+    "cy:version": "cypress version",
+    "cy:cache:list": "cypress cache list",
+    "e2e:record:parallel": "cypress run --record --parallel",
+    "merge": "mochawesome-merge cypress/reports/mochawesome-report/*.json > cypress/reports/RestAPI_Report.json",
+    "generate_mochaawesome_report": "marge  cypress/reports/RestAPI_Report.json --reportDir ./ --inline",
+    "mochawesome_final_report": "npm run merge && npm run generate_mochaawesome_report"
   },
   "keywords": [],
   "author": "Praveen Reddy Narala",
@@ -24,6 +32,9 @@
     "@types/json-server": "^0.14.2",
     "faker": "^5.1.0",
     "i": "^0.3.6",
+    "mocha": "^8.2.1",
+    "mochawesome": "^6.2.1",
+    "mochawesome-merge": "^4.2.0",
     "typescript": "^4.0.5"
   }
 }
