@@ -1,10 +1,11 @@
 pipeline {
-  agent {
+  agent any
+//   agent {
     // this image provides everything needed to run Cypress
-    docker {
-      image 'cypress/base:10'
-    }
-  }
+    // docker {
+    //   image 'cypress/base:10'
+    // }
+//   }
 
   stages {
     // first stage installs node dependencies and Cypress binary
