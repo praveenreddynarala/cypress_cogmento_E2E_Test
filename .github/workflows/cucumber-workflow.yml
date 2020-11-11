@@ -19,6 +19,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         
+      - name: Get npm cache
+        id: npm-cache-dir-path
+        run: echo "::set-output name=dir::$(npm cache dir)"
+        
       - name: Install dependencies
         uses: cypress-io/github-action@v2
         with:
