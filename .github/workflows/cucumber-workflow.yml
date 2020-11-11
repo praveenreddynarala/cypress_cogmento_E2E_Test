@@ -30,6 +30,7 @@ jobs:
 
       - name: Run Cypress Cucumber Scenarios
         uses: cypress-io/github-action@v2
+        continue-on-error: true
         if: always()
         with:
           install: false
