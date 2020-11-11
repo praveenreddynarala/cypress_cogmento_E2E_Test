@@ -1,6 +1,3 @@
-
-def prop = [: ]
-
 pipeline {
   agent {
     // this image provides everything needed to run Cypress
@@ -9,38 +6,15 @@ pipeline {
     }
   }
 
-  environment {
-    CHROME_BIN = '/bin/google-chrome'
-  }
-
   stages {
-    stage('Clone') {
+    // first stage installs node dependencies and Cypress binary
+    stage('build') {
       steps {
-        script {
-          def gitInfo = checkout scm
-          prop = [
-              'commitID': gitInfo.GIT_COMMIT,
-              'branch': env.BRANCH_NAME,
-              'repourl': gitInfo.GIT_URL,
-              'buildId': env.BUILD_ID,
-              'jenkinsUrl': env.JENKINS_URL,
-              'iqProjectName': 'Cypress_Jenkins_Pipeline',
-              'buildType': 'node',
-              'repository': 'cypress_cogmento_E2E_Test']
-          echo "$prop.commitID"
-        }
-      }
-    }
-
-    stage('Dependencies') {
-      steps {
+        // there a few default environment variables on Jenkins
+        // on local Jenkins machine (assuming port 8080) see
+        // http://localhost:8080/pipeline-syntax/globals#env
+        echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
         sh 'npm ci'
-      }
-    }
-
-    stage('Build') {
-      steps {
-        echo "Running build ${$prop.buildId} on ${$prop.jenkinsUrl} on branch ${$prop.branch}"
         sh 'npm run cy:verify'
       }
     }
@@ -53,7 +27,9 @@ pipeline {
       }
     }
 
-    stage('Cypress Parallel Tests') {
+    // this stage runs end-to-end tests, and each agent uses the workspace
+    // from the previous stage
+    stage('cypress parallel tests') {
       environment {
         // we will be recording test results and video on Cypress dashboard
         // to record we need to set an environment variable
@@ -65,12 +41,13 @@ pipeline {
         CYPRESS_trashAssetsBeforeRuns = 'false'
       }
 
+      // https://jenkins.io/doc/book/pipeline/syntax/#parallel
       parallel {
         // start several test jobs in parallel, and they all
         // will use Cypress Dashboard to load balance any found spec files
         stage('tester A') {
           steps {
-            echo "Running build ${$prop.buildId}"
+            echo "Running build ${env.BUILD_ID}"
             sh 'npm run e2e:record:parallel'
           }
         }
@@ -78,19 +55,19 @@ pipeline {
         // second tester runs the same command
         stage('tester B') {
           steps {
-            echo "Running build ${$prop.buildId}"
+            echo "Running build ${env.BUILD_ID}"
             sh 'npm run e2e:record:parallel'
           }
         }
       }
     }
+  }
 
-    post {
-      // shutdown the server running in the background
-      always {
-        echo 'Stopping local server'
-        sh 'pkill -f http-server'
-      }
+  post {
+    // shutdown the server running in the background
+    always {
+      echo 'Stopping local server'
+      sh 'pkill -f http-server'
     }
   }
-  }
+}
