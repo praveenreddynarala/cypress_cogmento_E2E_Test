@@ -14,10 +14,7 @@ on:
 jobs:
   cypress-run:
     env:
-      # pass the Dashboard record key as an environment variable
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          # Recommended: pass the GitHub token lets this action correctly
-          # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           #browser: chrome 
           CYPRESS_reqres_url: "https://reqres.in"
@@ -28,7 +25,7 @@ jobs:
           CYPRESS_bearer_token: ${{ secrets.GOREST_TOKEN }}
           CYPRESS_github_bearer_token: ${{ secrets.GTH_TOKEN }}
           CYPRESS_mock_url: ${{ secrets.MOCK_TEST_ENV_URL }} 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v1
@@ -45,7 +42,7 @@ jobs:
         uses: cypress-io/github-action@v1
         if: always()
         with:
-          project: ./cypress/integration/restAPI/**/*
+          spec: cypress/integration/restAPI/**/*
           record: true
           browser: chrome
           group: 'Actions example'
