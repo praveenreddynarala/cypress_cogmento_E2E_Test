@@ -1,3 +1,4 @@
+
 def prop = [: ]
 
 pipeline {
@@ -17,7 +18,15 @@ pipeline {
       steps {
         script {
           def gitInfo = checkout scm
-          prop = ['commitID': gitInfo.GIT_COMMIT, 'branch': env.BRANCH_NAME, 'repourl': gitInfo.GIT_URL, 'buildId': env.BUILD_ID, 'jenkinsUrl': env.JENKINS_URL, 'iqProjectName': 'Cypress_Jenkins_Pipeline', 'buildType': 'node', 'repository': 'cypress_cogmento_E2E_Test']
+          prop = [
+              'commitID': gitInfo.GIT_COMMIT,
+              'branch': env.BRANCH_NAME,
+              'repourl': gitInfo.GIT_URL,
+              'buildId': env.BUILD_ID,
+              'jenkinsUrl': env.JENKINS_URL,
+              'iqProjectName': 'Cypress_Jenkins_Pipeline',
+              'buildType': 'node',
+              'repository': 'cypress_cogmento_E2E_Test']
           echo "$prop.commitID"
         }
       }
@@ -62,7 +71,7 @@ pipeline {
         stage('tester A') {
           steps {
             echo "Running build ${$prop.buildId}"
-            sh "npm run e2e:record:parallel"
+            sh 'npm run e2e:record:parallel'
           }
         }
 
@@ -70,7 +79,7 @@ pipeline {
         stage('tester B') {
           steps {
             echo "Running build ${$prop.buildId}"
-            sh "npm run e2e:record:parallel"
+            sh 'npm run e2e:record:parallel'
           }
         }
       }
@@ -83,4 +92,5 @@ pipeline {
         sh 'pkill -f http-server'
       }
     }
+  }
   }
