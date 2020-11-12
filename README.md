@@ -738,15 +738,24 @@ faker.js is a JavaScript library for generating fake data. Fake data is useful w
 **_Step 1: Installation_**
 
 _Install Mocha_
-    npm install mocha --save-dev
+    
+        npm install mocha --save-dev
+
 _Install cypress-multi-reporters_
-    npm install cypress-multi-reporters --save-dev
+    
+        npm install cypress-multi-reporters --save-dev
+
 _Install mochawesome_
-    npm install mochawesome --save-dev
+        
+        npm install mochawesome --save-dev
+
 _Install mochawesome-merge_
-    npm install mochawesome-merge --save-dev
+        
+        npm install mochawesome-merge --save-dev
+
 _Install mochawesome-report-generator_
-    npm install mochawesome-report-generator --save-dev
+        
+        npm install mochawesome-report-generator --save-dev
     
 **_Step 2: Add reporter settings in cypress.json_**
 
