@@ -2,14 +2,14 @@ pipeline {
   agent master
 
   parameters {
-    string(defaultValue: 'https://reqres.in', description: '', name: 'reqres_url', trim: false), 
-    string(defaultValue: 'https://gorest.co.in', description: '', name: 'gorest_url', trim: false), 
-    string(defaultValue: 'https://api.github.com', description: '', name: 'github_url', trim: false), 
-    string(defaultValue: 'praveenreddynarala', description: '', name: 'auth_username', trim: false), 
-    password(defaultValue: 'Pr@veen26785', description: '', name: 'auth_password'), 
-    string(defaultValue: 'pJpMr1MHHccRJUQo9jW4Ue7TX8uy-dVWVIBY', description: '', name: 'bearer_token', trim: false), 
-    string(defaultValue: '9b82f4dabe53b4c7e76b1bfeb83d4f57dd9a25ef', description: '', name: 'github_bearer_token', trim: false), 
-    string(defaultValue: 'http://localhost:3000', description: '', name: 'mock_url', trim: false)])])
+    string(defaultValue: 'https://reqres.in', description: '', name: 'reqres_url', trim: false)
+    string(defaultValue: 'https://gorest.co.in', description: '', name: 'gorest_url', trim: false) 
+    string(defaultValue: 'https://api.github.com', description: '', name: 'github_url', trim: false) 
+    string(defaultValue: 'praveenreddynarala', description: '', name: 'auth_username', trim: false) 
+    password(defaultValue: 'Pr@veen26785', description: '', name: 'auth_password')
+    string(defaultValue: 'pJpMr1MHHccRJUQo9jW4Ue7TX8uy-dVWVIBY', description: '', name: 'bearer_token', trim: false)
+    string(defaultValue: '9b82f4dabe53b4c7e76b1bfeb83d4f57dd9a25ef', description: '', name: 'github_bearer_token', trim: false) 
+    string(defaultValue: 'http://localhost:3000', description: '', name: 'mock_url', trim: false)
   }
   
   stages {
