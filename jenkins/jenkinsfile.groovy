@@ -1,6 +1,8 @@
 pipeline {
   agent any
 
+  tools {nodejs "node"}
+
   parameters {
     string defaultValue: 'https://reqres.in', description: '', name: 'reqres_url', trim: false
     string defaultValue: 'https://gorest.co.in', description: '', name: 'gorest_url', trim: false 
@@ -39,6 +41,7 @@ pipeline {
 
     stage('Install Dependencies') {
       steps {
+        sh 'npm config ls'
         sh 'npm install'
         sh 'npm install jason-server --save -dev'
         sh 'npm install faker --save'
