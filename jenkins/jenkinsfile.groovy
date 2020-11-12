@@ -41,7 +41,6 @@ pipeline {
 
     stage('Install Dependencies') {
       steps {
-        // bat 'npm i'
         bat 'npm install'
         bat 'npm install jason-server --save -dev'
         bat 'npm install faker --save'
@@ -55,13 +54,15 @@ pipeline {
 
     stage('Build') {
       steps {
-        bat 'npm run build'
+        script {
+          bat 'npm run build'
+        }
       }
     }
 
     stage('Run Tests') {
         steps {
-          // echo "Running build ${env.BUILD_ID}"
+          echo "Running build ${env.BUILD_ID}"
           script {
             try{
               bat 'npx -e NO_COLOR=1 cypress run --env reqres_url=${params.reqres_url},gorest_url=${params.gorest_url},github_url=${params.github_url},auth_username=${params.auth_username},auth_password=${env.GH_PASSWORD},bearer_token=${env.GOREST_BEARER_TOKEN},github_bearer_token=${env.GIT_HUB_BEARER_TOKEN},mock_url=${params.mock_url}'
