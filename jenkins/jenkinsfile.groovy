@@ -13,6 +13,9 @@ pipeline {
   }
   
   stages {
+    when {
+      branch 'cypressAPI'
+    }
     stage('Scm checkout') {
       steps {
         git branch: 'cypressAPI', credentialsId: 'f6a76776-a640-40a2-ac8b-0126a137a4a6', url: 'https://github.com/praveenreddynarala/cypress_cogmento_E2E_Test.git'
