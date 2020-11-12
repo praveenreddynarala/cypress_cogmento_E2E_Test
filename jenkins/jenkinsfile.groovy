@@ -1,5 +1,5 @@
 pipeline {
-  agent master
+  agent any
 
   parameters {
     string(defaultValue: 'https://reqres.in', description: '', name: 'reqres_url', trim: false)
