@@ -1,0 +1,145 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2020-11-12T16:24:00.721Z",
+    "end": "2020-11-12T16:24:01.287Z",
+    "duration": 566,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b6505b72-a329-4d7a-862f-e1bad5eac192",
+      "title": "",
+      "fullFile": "cypress\\integration\\restAPI\\patch_requests\\patch_calls.js",
+      "file": "cypress\\integration\\restAPI\\patch_requests\\patch_calls.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "86b78868-dcec-417a-9515-8619eafc3bb8",
+          "title": "Patch Update Calls",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Check status",
+              "fullTitle": "Patch Update Calls Check status",
+              "timedOut": null,
+              "duration": 205,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('@request').then(function (response) {\n  cy.log(JSON.stringify(response));\n  cy.log(JSON.stringify(response.headers));\n  cy.log(JSON.stringify(response.body));\n  cy.log(JSON.stringify(response.body.name));\n  expect(response.status).equal(200);\n});",
+              "err": {},
+              "uuid": "002c2a8f-a363-4fd1-b6fe-0761ad46f1e5",
+              "parentUUID": "86b78868-dcec-417a-9515-8619eafc3bb8",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Check updated record using Should command",
+              "fullTitle": "Patch Update Calls Check updated record using Should command",
+              "timedOut": null,
+              "duration": 152,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('@request').its('body').should('include', {\n  \"name\": \"morpheus\",\n  \"job\": \"zion resident\"\n});",
+              "err": {},
+              "uuid": "39e61a8b-6bf4-486b-bb3c-dbbfd8215c04",
+              "parentUUID": "86b78868-dcec-417a-9515-8619eafc3bb8",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Check update record",
+              "fullTitle": "Patch Update Calls Check update record",
+              "timedOut": null,
+              "duration": 132,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('@request').its('body').then(function (response) {\n  expect(response).to.have.property('name', response.name);\n  expect(response).to.have.property('job', response.job);\n});",
+              "err": {},
+              "uuid": "4e12d450-730a-4993-877b-dcd23bb18d31",
+              "parentUUID": "86b78868-dcec-417a-9515-8619eafc3bb8",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "002c2a8f-a363-4fd1-b6fe-0761ad46f1e5",
+            "39e61a8b-6bf4-486b-bb3c-dbbfd8215c04",
+            "4e12d450-730a-4993-877b-dcd23bb18d31"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 489,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.1"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.1.0"
+    }
+  }
+}

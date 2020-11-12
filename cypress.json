@@ -2,14 +2,15 @@
   "projectId": "wye8d5",
   "pageLoadTimeout": 100000,
   "defaultCommandTimeout": 10000,
-  "reporter": "mochawesome ",
-  "reporterOptions": {
-      "reportDir": "cypress/reports/mochawesome-report",
-      "overwrite": false,
-      "html": true,
-      "json": true,
-      "charts": true,
-      "timestamp": "mmddyyyy_HHMMss"
-   },
-   "video": true 
+  "reporter": "cypress-multi-reporters",
+    "reporterOptions": {
+        "reporterEnabled": "mochawesome",
+        "mochawesomeReporterOptions": {
+            "reportDir": "cypress/reports/mocha",
+            "quite": true,
+            "overwrite": false,
+            "html": false,
+            "json": true
+        }
+    }
 }

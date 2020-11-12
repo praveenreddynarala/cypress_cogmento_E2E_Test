@@ -14,9 +14,13 @@
     "cy:version": "cypress version",
     "cy:cache:list": "cypress cache list",
     "e2e:record:parallel": "cypress run --record --parallel",
-    "merge": "mochawesome-merge cypress/reports/mochawesome-report/*.json > cypress/reports/RestAPI_Report.json",
-    "generate_mochaawesome_report": "marge  cypress/reports/RestAPI_Report.json --reportDir ./ --inline",
-    "mochawesome_final_report": "npm run merge && npm run generate_mochaawesome_report",
+    "clean:reports": "rmdir /S /Q cypress\\reports && mkdir cypress\\reports && mkdir cypress\\reports\\mochareports",
+    "pretest": "npm run clean:reports",
+    "scripts": "cypress run",
+    "combine-reports": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/report.json",
+    "generate-report": "marge cypress/reports/mochareports/report.json -f report -o cypress/reports/mochareports",
+    "posttest": "npm run combine-reports && npm run generate-report",
+    "test" : "npm run scripts || npm run posttest",
     "test-jenkins": "JUNIT_REPORT_PATH=/report.xml mocha --colors --reporter mocha-jenkins-reporter"
   },
   "keywords": [],
@@ -25,7 +29,7 @@
   "devDependencies": {
     "@types/faker": "^5.1.4",
     "chai": "^4.2.0",
-    "cypress": "^5.4.0",
+    "cypress": "^5.6.0",
     "cypress-multi-reporters": "^1.4.0",
     "cypress-xpath": "^1.6.0",
     "json-server": "^0.16.2",
@@ -36,6 +40,7 @@
     "@types/json-server": "^0.14.2",
     "faker": "^5.1.0",
     "i": "^0.3.6",
+    "jason-server": "^3.0.0",
     "mocha-jenkins-reporter": "^0.4.5",
     "mochawesome-merge": "^4.2.0",
     "typescript": "^4.0.5"

@@ -1,0 +1,203 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2020-11-12T16:23:04.627Z",
+    "end": "2020-11-12T16:23:05.097Z",
+    "duration": 470,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "2e8d6d32-6e1f-41c1-b691-75448a0a1740",
+      "title": "",
+      "fullFile": "cypress\\integration\\mockAPI_examples\\mock_get_calls.js",
+      "file": "cypress\\integration\\mockAPI_examples\\mock_get_calls.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "2d7eeca7-47c2-481a-b9e0-b4f2719299ec",
+          "title": "Testing mock API",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Check status code",
+              "fullTitle": "Testing mock API Check status code",
+              "timedOut": null,
+              "duration": 172,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('@request').then(function (response) {\n  expect(response.status).equal(200);\n  cy.log(JSON.stringify(response.headers));\n});",
+              "err": {},
+              "uuid": "f91c9dcd-d189-4ec6-b14e-eaf7b2123765",
+              "parentUUID": "2d7eeca7-47c2-481a-b9e0-b4f2719299ec",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Get all users",
+              "fullTitle": "Testing mock API Get all users",
+              "timedOut": null,
+              "duration": 60,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('@request').its('body').then(function (response) {\n  cy.log(JSON.stringify(response[1]));\n  expect(response[1]).deep.equal({\n    \"id\": 2,\n    \"name\": \"Chris\",\n    \"surname\": \"B.\"\n  });\n});",
+              "err": {},
+              "uuid": "1231958f-42d0-4189-bc5f-f65b211c6eac",
+              "parentUUID": "2d7eeca7-47c2-481a-b9e0-b4f2719299ec",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "f91c9dcd-d189-4ec6-b14e-eaf7b2123765",
+            "1231958f-42d0-4189-bc5f-f65b211c6eac"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 232,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "86175ad7-36c4-4b68-b79b-d79c018ae3bb",
+          "title": "Test Query parameters",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Get user details based on ID",
+              "fullTitle": "Test Query parameters Get user details based on ID",
+              "timedOut": null,
+              "duration": 72,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'GET',\n  url: Cypress.env('mock_url') + '/users/1',\n  headers: {\n    'Content-type': 'application/json'\n  }\n}).as('request');\ncy.get('@request').its('status').should('equal', 200);\ncy.get('@request').its('body').then(function (response) {\n  cy.log(JSON.stringify(response));\n  expect(response).deep.equal({\n    \"id\": 1,\n    \"name\": \"Jonas\",\n    \"surname\": \"T.\"\n  });\n});",
+              "err": {},
+              "uuid": "0b4fc5f2-76bb-471c-81af-8f6e919be581",
+              "parentUUID": "86175ad7-36c4-4b68-b79b-d79c018ae3bb",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Get user using mached characters of name field/Text search",
+              "fullTitle": "Test Query parameters Get user using mached characters of name field/Text search",
+              "timedOut": null,
+              "duration": 60,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'GET',\n  url: Cypress.env('mock_url') + '/users?q=J',\n  headers: {\n    'Content-type': 'application/json'\n  }\n}).as('request');\ncy.get('@request').its('body').then(function (response) {\n  response.forEach(function (element) {\n    expect(element.name).to.be.contains('J');\n  });\n});",
+              "err": {},
+              "uuid": "2d6313f8-1781-4ef2-854b-a52a3ff78455",
+              "parentUUID": "86175ad7-36c4-4b68-b79b-d79c018ae3bb",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Get user using pagination and limit",
+              "fullTitle": "Test Query parameters Get user using pagination and limit",
+              "timedOut": null,
+              "duration": 39,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'GET',\n  url: Cypress.env('mock_url') + '/users?_page=1&_limit=1',\n  headers: {\n    'Content-type': 'application/json'\n  }\n}).as('request');\ncy.get('@request').its('body').then(function (response) {\n  expect(response.length).to.be.equal(1);\n});",
+              "err": {},
+              "uuid": "58a3013a-871c-4077-9788-32db4caf5aea",
+              "parentUUID": "86175ad7-36c4-4b68-b79b-d79c018ae3bb",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "0b4fc5f2-76bb-471c-81af-8f6e919be581",
+            "2d6313f8-1781-4ef2-854b-a52a3ff78455",
+            "58a3013a-871c-4077-9788-32db4caf5aea"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 171,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.1"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.1.0"
+    }
+  }
+}

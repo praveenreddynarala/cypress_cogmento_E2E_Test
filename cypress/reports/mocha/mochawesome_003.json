@@ -1,0 +1,169 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 3,
+    "passes": 2,
+    "pending": 0,
+    "failures": 1,
+    "start": "2020-11-12T16:23:20.997Z",
+    "end": "2020-11-12T16:23:23.393Z",
+    "duration": 2396,
+    "testsRegistered": 3,
+    "passPercent": 66.66666666666666,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "34ba5550-7beb-4551-ae5b-da3717aa020d",
+      "title": "",
+      "fullFile": "cypress\\integration\\restAPI\\get_requests\\get_calls_using_barear_tocken.js",
+      "file": "cypress\\integration\\restAPI\\get_requests\\get_calls_using_barear_tocken.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "56eddd60-2dea-4d3b-bd4b-de2df360a7bb",
+          "title": "GET calls using Barear Authentication Tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Check status code for all users",
+              "fullTitle": "GET calls using Barear Authentication Tests Check status code for all users",
+              "timedOut": null,
+              "duration": 1188,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('@request').its('status').should('equal', 200);",
+              "err": {},
+              "uuid": "e7eeb903-6928-435b-9b6e-20f339662e58",
+              "parentUUID": "56eddd60-2dea-4d3b-bd4b-de2df360a7bb",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Check status code for all users",
+              "fullTitle": "GET calls using Barear Authentication Tests Check status code for all users",
+              "timedOut": null,
+              "duration": 276,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('@request').then(function (response) {\n  cy.writeFile('cypress/fixtures/save_responses/seved_response.json', response.body);\n  cy.readFile('cypress/fixtures/save_responses/seved_response.json').then(function (json_data) {\n    cy.log(json_data.code);\n    expect(json_data.code).equal(200);\n  });\n});",
+              "err": {},
+              "uuid": "5879050f-5aa6-4bad-bc39-c2dd46c890f8",
+              "parentUUID": "56eddd60-2dea-4d3b-bd4b-de2df360a7bb",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "e7eeb903-6928-435b-9b6e-20f339662e58",
+            "5879050f-5aa6-4bad-bc39-c2dd46c890f8"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1464,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "af31f784-fdbe-424d-8767-fe2271ba131f",
+          "title": "Optional Query Parameter tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Check expected response",
+              "fullTitle": "Optional Query Parameter tests Check expected response",
+              "timedOut": null,
+              "duration": 768,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('@request1').its('body').its('data').then(function (response) {\n  cy.log(JSON.stringify(response));\n  expect(response[0].email).equal('bhagwanti_gowda@waelchi.org');\n});",
+              "err": {
+                "message": "AssertionError: expected 'khatri_suryakantam@borer.net' to equal 'bhagwanti_gowda@waelchi.org'",
+                "estack": "AssertionError: expected 'khatri_suryakantam@borer.net' to equal 'bhagwanti_gowda@waelchi.org'\n    at Context.eval (http://localhost:63206/__cypress/tests?p=cypress\\integration\\restAPI\\get_requests\\get_calls_using_barear_tocken.js:146:33)",
+                "diff": "- 'khatri_suryakantam@borer.net'\n+ 'bhagwanti_gowda@waelchi.org'\n"
+              },
+              "uuid": "b91a958e-6370-416c-ae6f-75b5e47ea4d6",
+              "parentUUID": "af31f784-fdbe-424d-8767-fe2271ba131f",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "b91a958e-6370-416c-ae6f-75b5e47ea4d6"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 768,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.1"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.1.0"
+    }
+  }
+}

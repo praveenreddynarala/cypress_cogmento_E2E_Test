@@ -1,0 +1,107 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2020-11-12T16:23:15.380Z",
+    "end": "2020-11-12T16:23:15.784Z",
+    "duration": 404,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "20d42027-8424-40a0-9a7f-2292af2e4596",
+      "title": "",
+      "fullFile": "cypress\\integration\\restAPI\\delete_requests\\delete_calls.js",
+      "file": "cypress\\integration\\restAPI\\delete_requests\\delete_calls.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "b58d4c28-ba59-4de2-b61f-51eec78cd3c0",
+          "title": "Delete Requests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Delete resource",
+              "fullTitle": "Delete Requests Delete resource",
+              "timedOut": null,
+              "duration": 351,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'DELETE',\n  url: Cypress.env('reqres_url') + '/api/users/2'\n}).then(function (response) {\n  expect(response.status).equal(204);\n});",
+              "err": {},
+              "uuid": "e5296ed8-10fc-4ff0-bc4e-0bd80265aef0",
+              "parentUUID": "b58d4c28-ba59-4de2-b61f-51eec78cd3c0",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "e5296ed8-10fc-4ff0-bc4e-0bd80265aef0"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 351,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.1"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.1.0"
+    }
+  }
+}
