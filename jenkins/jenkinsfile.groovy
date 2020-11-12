@@ -41,21 +41,21 @@ pipeline {
 
     stage('Install Dependencies') {
       steps {
-        sh 'npm i'
-        // sh 'npm install'
-        sh 'npm install jason-server --save -dev'
-        sh 'npm install faker --save'
-        sh 'npm install mocha --save-dev'
-        sh 'npm install cypress-multi-reporters --save-dev'
-        sh 'npm install mochawesome --save-dev'
-        sh 'npm install mochawesome-merge --save-dev'
-        sh 'npm install mochawesome-report-generator --save-dev'
+        // bat 'npm i'
+        bat 'npm install'
+        bat 'npm install jason-server --save -dev'
+        bat 'npm install faker --save'
+        bat 'npm install mocha --save-dev'
+        bat 'npm install cypress-multi-reporters --save-dev'
+        bat 'npm install mochawesome --save-dev'
+        bat 'npm install mochawesome-merge --save-dev'
+        bat 'npm install mochawesome-report-generator --save-dev'
       }
     }
 
     stage('Build') {
       steps {
-        sh 'npm run build'
+        bat 'npm run build'
       }
     }
 
@@ -64,7 +64,7 @@ pipeline {
           // echo "Running build ${env.BUILD_ID}"
           script {
             try{
-              sh 'npx -e NO_COLOR=1 cypress run --env reqres_url=${params.reqres_url},gorest_url=${params.gorest_url},github_url=${params.github_url},auth_username=${params.auth_username},auth_password=${env.GH_PASSWORD},bearer_token=${env.GOREST_BEARER_TOKEN},github_bearer_token=${env.GIT_HUB_BEARER_TOKEN},mock_url=${params.mock_url}'
+              bat 'npx -e NO_COLOR=1 cypress run --env reqres_url=${params.reqres_url},gorest_url=${params.gorest_url},github_url=${params.github_url},auth_username=${params.auth_username},auth_password=${env.GH_PASSWORD},bearer_token=${env.GOREST_BEARER_TOKEN},github_bearer_token=${env.GIT_HUB_BEARER_TOKEN},mock_url=${params.mock_url}'
             }catch(Exception e){
               echo 'Passed'
             }
@@ -74,7 +74,7 @@ pipeline {
 
     stage('Generate Reports'){
       steps {
-        sh 'npm run posttest'
+        bat 'npm run posttest'
       }
     }
   }
@@ -83,22 +83,22 @@ pipeline {
     always {
       script {
         echo 'Stopping local server'
-        sh 'pkill -f http-server'
+        bat 'pkill -f http-server'
       }
     }
     success {
       script {
-        sh 'echo SUCCESS'
+        bat 'echo SUCCESS'
       }
     }
     unstable {
       script {
-        sh 'echo UNSTABLE'
+        bat 'echo UNSTABLE'
       }
     }
     failure {
       script {
-        sh 'echo FAILURE'
+        bat 'echo FAILURE'
       }
     }
   }
