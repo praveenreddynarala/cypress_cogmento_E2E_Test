@@ -2,7 +2,7 @@
   "projectId": "wye8d5",
   "pageLoadTimeout": 100000,
   "defaultCommandTimeout": 10000,
-  "reporter": "../../node_modules/mochawesome/src/mochawesome.js",
+  "reporter": "node_modules/mochawesome/src/mochawesome.js",
   "reporterOptions": {
       "reportDir": "cypress/reports/mochawesome-report",
       "overwrite": false,
