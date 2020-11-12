@@ -79,14 +79,20 @@ pipeline {
         echo 'Stopping local server'
         sh 'pkill -f http-server'
       }
+    }
     success {
-      echo 'Pipeline has success status'
+      script {
+        sh 'echo SUCCESS'
       }
+    }
     unstable {
-      echo 'Pipeline is unstable status'
+      script {
+        sh 'echo UNSTABLE'
       }
+    }
     failure {
-      echo 'Pipeline FAILED'
+      script {
+        sh 'echo FAILURE'
       }
     }
   }
