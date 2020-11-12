@@ -13,10 +13,10 @@ pipeline {
   }
   
   stages {
-    when {
-      branch 'cypressAPI'
-    }
     stage('Scm checkout') {
+      when {
+        branch 'cypressAPI'
+    }
       steps {
         git branch: 'cypressAPI', credentialsId: 'f6a76776-a640-40a2-ac8b-0126a137a4a6', url: 'https://github.com/praveenreddynarala/cypress_cogmento_E2E_Test.git'
       }
@@ -45,16 +45,18 @@ pipeline {
         // because parallel steps share the workspace they might race to delete
         // screenshots and videos folders. Tell Cypress not to delete these folders
         CYPRESS_trashAssetsBeforeRuns = 'false'
-      }
+      } 
 
       parallel {
         stage('Run Tests') {
           steps {
             echo "Running build ${env.BUILD_ID}"
-            try{
-              sh 'npx -e NO_COLOR=1 cypress run --env reqres_url=${params.reqres_url},gorest_url=${params.gorest_url},github_url=${params.github_url},auth_username=${params.auth_username},auth_password=${params.auth_password},bearer_token=${params.bearer_token},github_bearer_token=${params.github_bearer_token},mock_url=${params.mock_url}'
-            }catch(Exception e){
-              echo 'Passed'
+            script {
+              try{
+                sh 'npx -e NO_COLOR=1 cypress run --env reqres_url=${params.reqres_url},gorest_url=${params.gorest_url},github_url=${params.github_url},auth_username=${params.auth_username},auth_password=${params.auth_password},bearer_token=${params.bearer_token},github_bearer_token=${params.github_bearer_token},mock_url=${params.mock_url}'
+              }catch(Exception e){
+                echo 'Passed'
+              }
             }
           }
         }
@@ -62,7 +64,9 @@ pipeline {
     }
 
     stage('Generate Reports'){
-      sh npm run posttest
+      steps {
+        sh 'npm run posttest'
+      }
     }
   }
 
