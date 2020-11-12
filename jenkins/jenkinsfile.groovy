@@ -16,6 +16,7 @@ pipeline {
     GH_PASSWORD = credentials('GH_PASSWORD')
     GOREST_BEARER_TOKEN = credentials('GOREST_BEARER_TOKEN')
     GIT_HUB_BEARER_TOKEN = credentials('GIT_HUB_BEARER_TOKEN')
+    CYPRESS_RECORD_KEY = credentials('CYPRESS_RECORD_KEY')
   }
   
   stages {
@@ -41,17 +42,17 @@ pipeline {
       }
     }
 
-    stage('cypress parallel tests') {
-      environment {
-        // we will be recording test results and video on Cypress dashboard
-        // to record we need to set an environment variable
-        // we can load the record key variable from credentials store
-        // see https://jenkins.io/doc/book/using/using-credentials/
-        CYPRESS_RECORD_KEY = credentials('CYPRESS_RECORD_KEY')
-        // because parallel steps share the workspace they might race to delete
-        // screenshots and videos folders. Tell Cypress not to delete these folders
-        CYPRESS_trashAssetsBeforeRuns = 'false'
-      } 
+    // stage('cypress parallel tests') {
+    //   environment {
+    //     // we will be recording test results and video on Cypress dashboard
+    //     // to record we need to set an environment variable
+    //     // we can load the record key variable from credentials store
+    //     // see https://jenkins.io/doc/book/using/using-credentials/
+    //     CYPRESS_RECORD_KEY = credentials('CYPRESS_RECORD_KEY')
+    //     // because parallel steps share the workspace they might race to delete
+    //     // screenshots and videos folders. Tell Cypress not to delete these folders
+    //     CYPRESS_trashAssetsBeforeRuns = 'false'
+    //   } 
 
       stage('Run Tests') {
           steps {
