@@ -75,8 +75,19 @@ pipeline {
 
   post {
     always {
-      echo 'Stopping local server'
-      sh 'pkill -f http-server'
+      script {
+        echo 'Stopping local server'
+        sh 'pkill -f http-server'
+      }
+    success {
+      echo 'Pipeline has success status'
+      }
+    unstable {
+      echo 'Pipeline is unstable status'
+      }
+    failure {
+      echo 'Pipeline FAILED'
+      }
     }
   }
 }
