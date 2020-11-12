@@ -39,7 +39,7 @@ pipeline {
     stage('Install Dependencies') {
       steps {
         bat 'npm config set registry http://registry.npmjs.org/'
-        bat 'npm i'
+        bat 'npm install'
         bat 'npm install jason-server --save -dev'
         bat 'npm install faker --save'
         bat 'npm install mocha --save-dev'
