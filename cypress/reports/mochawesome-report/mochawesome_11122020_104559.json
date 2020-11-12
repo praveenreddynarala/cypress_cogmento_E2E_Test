@@ -1,0 +1,134 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 0,
+    "pending": 0,
+    "failures": 2,
+    "start": "2020-11-12T10:44:59.070Z",
+    "end": "2020-11-12T10:45:59.828Z",
+    "duration": 60758,
+    "testsRegistered": 2,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "a38e3baa-f092-48c1-b2b0-e5198033cea7",
+      "title": "",
+      "fullFile": "cypress\\integration\\mockAPI_examples\\mock_post_delete_calls.js",
+      "file": "cypress\\integration\\mockAPI_examples\\mock_post_delete_calls.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "ff71d94f-cfb0-4506-a8fa-29ba846dd4d4",
+          "title": "Mock POST calls",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Create new resource",
+              "fullTitle": "Mock POST calls Create new resource",
+              "timedOut": null,
+              "duration": 30361,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'POST',\n  url: Cypress.env('mock_url') + '/users',\n  headers: {\n    'Content-type': 'application/json'\n  },\n  body: {\n    \"name\": \"Praveen\",\n    \"surname\": \"Narala\"\n  }\n}).as('request');\ncy.get('@request').then(function (response) {\n  if (response.status === 201) {\n    cy.log(response.body.id);\n    created_resource_id = response.body.id;\n  }\n});",
+              "err": {
+                "message": "CypressError: `cy.request()` timed out waiting `30000ms` for a response from your server.\n\nThe request we sent was:\n\nMethod: POST\nURL: http://localhost:3000/users\n\nNo response was received within the timeout.\n\nhttps://on.cypress.io/request",
+                "estack": "CypressError: `cy.request()` timed out waiting `30000ms` for a response from your server.\n\nThe request we sent was:\n\nMethod: POST\nURL: http://localhost:3000/users\n\nNo response was received within the timeout.\n\nhttps://on.cypress.io/request\n    at http://localhost:52856/__cypress/runner/cypress_runner.js:159709:19\n    at tryCatcher (http://localhost:52856/__cypress/runner/cypress_runner.js:10325:23)\n    at http://localhost:52856/__cypress/runner/cypress_runner.js:5447:41\n    at tryCatcher (http://localhost:52856/__cypress/runner/cypress_runner.js:10325:23)\n    at Promise._settlePromiseFromHandler (http://localhost:52856/__cypress/runner/cypress_runner.js:8260:31)\n    at Promise._settlePromise (http://localhost:52856/__cypress/runner/cypress_runner.js:8317:18)\n    at Promise._settlePromise0 (http://localhost:52856/__cypress/runner/cypress_runner.js:8362:10)\n    at Promise._settlePromises (http://localhost:52856/__cypress/runner/cypress_runner.js:8438:18)\n    at _drainQueueStep (http://localhost:52856/__cypress/runner/cypress_runner.js:5032:12)\n    at _drainQueue (http://localhost:52856/__cypress/runner/cypress_runner.js:5025:9)\n    at Async.../../node_modules/bluebird/js/release/async.js.Async._drainQueues (http://localhost:52856/__cypress/runner/cypress_runner.js:5041:5)\n    at Async.drainQueues (http://localhost:52856/__cypress/runner/cypress_runner.js:4911:14)\nFrom Your Spec Code:\n    at Context.eval (http://localhost:52856/__cypress/tests?p=cypress\\integration\\mockAPI_examples\\mock_post_delete_calls.js:102:8)",
+                "diff": null
+              },
+              "uuid": "a039a311-9cac-4ce0-bbdf-f31f15342afc",
+              "parentUUID": "ff71d94f-cfb0-4506-a8fa-29ba846dd4d4",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Delete created resource",
+              "fullTitle": "Mock POST calls Delete created resource",
+              "timedOut": null,
+              "duration": 30319,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'DELETE',\n  url: Cypress.env('mock_url') + '/users/' + created_resource_id,\n  headers: {\n    'Content-type': 'application/json'\n  }\n}).as('request');\ncy.get('@request').its('status').should('equal', 200);",
+              "err": {
+                "message": "CypressError: `cy.request()` timed out waiting `30000ms` for a response from your server.\n\nThe request we sent was:\n\nMethod: DELETE\nURL: http://localhost:3000/users/undefined\n\nNo response was received within the timeout.\n\nhttps://on.cypress.io/request",
+                "estack": "CypressError: `cy.request()` timed out waiting `30000ms` for a response from your server.\n\nThe request we sent was:\n\nMethod: DELETE\nURL: http://localhost:3000/users/undefined\n\nNo response was received within the timeout.\n\nhttps://on.cypress.io/request\n    at http://localhost:52856/__cypress/runner/cypress_runner.js:159709:19\n    at tryCatcher (http://localhost:52856/__cypress/runner/cypress_runner.js:10325:23)\n    at http://localhost:52856/__cypress/runner/cypress_runner.js:5447:41\n    at tryCatcher (http://localhost:52856/__cypress/runner/cypress_runner.js:10325:23)\n    at Promise._settlePromiseFromHandler (http://localhost:52856/__cypress/runner/cypress_runner.js:8260:31)\n    at Promise._settlePromise (http://localhost:52856/__cypress/runner/cypress_runner.js:8317:18)\n    at Promise._settlePromise0 (http://localhost:52856/__cypress/runner/cypress_runner.js:8362:10)\n    at Promise._settlePromises (http://localhost:52856/__cypress/runner/cypress_runner.js:8438:18)\n    at _drainQueueStep (http://localhost:52856/__cypress/runner/cypress_runner.js:5032:12)\n    at _drainQueue (http://localhost:52856/__cypress/runner/cypress_runner.js:5025:9)\n    at Async.../../node_modules/bluebird/js/release/async.js.Async._drainQueues (http://localhost:52856/__cypress/runner/cypress_runner.js:5041:5)\n    at Async.drainQueues (http://localhost:52856/__cypress/runner/cypress_runner.js:4911:14)\nFrom Your Spec Code:\n    at Context.eval (http://localhost:52856/__cypress/tests?p=cypress\\integration\\mockAPI_examples\\mock_post_delete_calls.js:121:8)",
+                "diff": null
+              },
+              "uuid": "7968cb4c-4c9b-469a-8b0e-ec468647abd1",
+              "parentUUID": "ff71d94f-cfb0-4506-a8fa-29ba846dd4d4",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "a039a311-9cac-4ce0-bbdf-f31f15342afc",
+            "7968cb4c-4c9b-469a-8b0e-ec468647abd1"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 60680,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.1"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome-report",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "charts": true,
+        "timestamp": "mmddyyyy_HHMMss"
+      },
+      "version": "5.1.0"
+    }
+  }
+}

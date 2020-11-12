@@ -16,7 +16,8 @@
     "e2e:record:parallel": "cypress run --record --parallel",
     "merge": "mochawesome-merge cypress/reports/mochawesome-report/*.json > cypress/reports/RestAPI_Report.json",
     "generate_mochaawesome_report": "marge  cypress/reports/RestAPI_Report.json --reportDir ./ --inline",
-    "mochawesome_final_report": "npm run merge && npm run generate_mochaawesome_report"
+    "mochawesome_final_report": "npm run merge && npm run generate_mochaawesome_report",
+    "test-jenkins": "JUNIT_REPORT_PATH=/report.xml mocha --colors --reporter mocha-jenkins-reporter"
   },
   "keywords": [],
   "author": "Praveen Reddy Narala",
@@ -25,15 +26,17 @@
     "@types/faker": "^5.1.4",
     "chai": "^4.2.0",
     "cypress": "^5.4.0",
+    "cypress-multi-reporters": "^1.4.0",
     "cypress-xpath": "^1.6.0",
-    "json-server": "^0.16.2"
+    "json-server": "^0.16.2",
+    "mocha": "^8.2.1",
+    "mochawesome": "^6.2.1"
   },
   "dependencies": {
     "@types/json-server": "^0.14.2",
     "faker": "^5.1.0",
     "i": "^0.3.6",
-    "mocha": "^8.2.1",
-    "mochawesome": "^6.2.1",
+    "mocha-jenkins-reporter": "^0.4.5",
     "mochawesome-merge": "^4.2.0",
     "typescript": "^4.0.5"
   }

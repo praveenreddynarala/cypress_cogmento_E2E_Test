@@ -1,0 +1,213 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 4,
+    "passes": 2,
+    "pending": 0,
+    "failures": 2,
+    "start": "2020-11-12T10:30:23.047Z",
+    "end": "2020-11-12T10:31:40.096Z",
+    "duration": 77049,
+    "testsRegistered": 5,
+    "passPercent": 40,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 1,
+    "hasSkipped": true
+  },
+  "results": [
+    {
+      "uuid": "78eb869b-9b4e-404e-98c4-cdac9c1172d7",
+      "title": "",
+      "fullFile": "cypress\\integration\\mockAPI_examples\\mock_get_calls.js",
+      "file": "cypress\\integration\\mockAPI_examples\\mock_get_calls.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "bc57bb2c-60d7-4599-bbfd-b6885e5a641c",
+          "title": "Testing mock API",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Check status code",
+              "fullTitle": "Testing mock API Check status code",
+              "timedOut": null,
+              "duration": 21003,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('@request').then(function (response) {\n  expect(response.status).equal(200);\n  cy.log(JSON.stringify(response.headers));\n});",
+              "err": {
+                "message": "CypressError: `cy.request()` failed trying to load:\n\nhttp://localhost:3000/users\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: connect ECONNREFUSED 127.0.0.1:3000\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: GET\nURL: http://localhost:3000/users\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Testing mock API`",
+                "estack": "CypressError: `cy.request()` failed trying to load:\n\nhttp://localhost:3000/users\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: connect ECONNREFUSED 127.0.0.1:3000\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: GET\nURL: http://localhost:3000/users\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Testing mock API`\n    at http://localhost:52310/__cypress/runner/cypress_runner.js:159720:19\n    at tryCatcher (http://localhost:52310/__cypress/runner/cypress_runner.js:10325:23)\n    at http://localhost:52310/__cypress/runner/cypress_runner.js:5464:37\n    at tryCatcher (http://localhost:52310/__cypress/runner/cypress_runner.js:10325:23)\n    at Promise._settlePromiseFromHandler (http://localhost:52310/__cypress/runner/cypress_runner.js:8260:31)\n    at Promise._settlePromise (http://localhost:52310/__cypress/runner/cypress_runner.js:8317:18)\n    at Promise._settlePromise0 (http://localhost:52310/__cypress/runner/cypress_runner.js:8362:10)\n    at Promise._settlePromises (http://localhost:52310/__cypress/runner/cypress_runner.js:8438:18)\n    at _drainQueueStep (http://localhost:52310/__cypress/runner/cypress_runner.js:5032:12)\n    at _drainQueue (http://localhost:52310/__cypress/runner/cypress_runner.js:5025:9)\n    at Async.../../node_modules/bluebird/js/release/async.js.Async._drainQueues (http://localhost:52310/__cypress/runner/cypress_runner.js:5041:5)\n    at Async.drainQueues (http://localhost:52310/__cypress/runner/cypress_runner.js:4911:14)\nFrom Your Spec Code:\n    at Context.eval (http://localhost:52310/__cypress/tests?p=cypress\\integration\\mockAPI_examples\\mock_get_calls.js:102:8)\n\nFrom Node.js Internals:\n  RequestError: Error: connect ECONNREFUSED 127.0.0.1:3000\n      at new RequestError (C:\\Users\\prnarala\\AppData\\Local\\Cypress\\Cache\\5.4.0\\Cypress\\resources\\app\\packages\\server\\node_modules\\request-promise-core\\lib\\errors.js:14:15)\n      at Request.plumbing.callback (C:\\Users\\prnarala\\AppData\\Local\\Cypress\\Cache\\5.4.0\\Cypress\\resources\\app\\packages\\server\\node_modules\\request-promise-core\\lib\\plumbing.js:87:29)\n      at Request.RP$callback [as _callback] (C:\\Users\\prnarala\\AppData\\Local\\Cypress\\Cache\\5.4.0\\Cypress\\resources\\app\\packages\\server\\node_modules\\request-promise-core\\lib\\plumbing.js:46:31)\n      at self.callback (C:\\Users\\prnarala\\AppData\\Local\\Cypress\\Cache\\5.4.0\\Cypress\\resources\\app\\packages\\server\\node_modules\\@cypress\\request\\request.js:185:22)\n      at Request.emit (events.js:310:20)\n      at Request.onRequestError (C:\\Users\\prnarala\\AppData\\Local\\Cypress\\Cache\\5.4.0\\Cypress\\resources\\app\\packages\\server\\node_modules\\@cypress\\request\\request.js:877:8)\n      at ClientRequest.emit (events.js:322:22)\n      at Socket.socketErrorListener (_http_client.js:426:9)\n      at Socket.emit (events.js:310:20)\n      at emitErrorNT (internal/streams/destroy.js:92:8)\n      at emitErrorAndCloseNT (internal/streams/destroy.js:60:3)\n      at processTicksAndRejections (internal/process/task_queues.js:84:21)\n  ",
+                "diff": null
+              },
+              "uuid": "2d1caba0-fac6-4c73-85d7-3d0c61bfcd20",
+              "parentUUID": "bc57bb2c-60d7-4599-bbfd-b6885e5a641c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Get all users",
+              "fullTitle": "Testing mock API Get all users",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('@request').its('body').then(function (response) {\n  cy.log(JSON.stringify(response[1]));\n  expect(response[1]).deep.equal({\n    \"id\": 2,\n    \"name\": \"Chris\",\n    \"surname\": \"B.\"\n  });\n});",
+              "err": {},
+              "uuid": "280d8226-d30d-4a56-88de-9922a89d9131",
+              "parentUUID": "bc57bb2c-60d7-4599-bbfd-b6885e5a641c",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "2d1caba0-fac6-4c73-85d7-3d0c61bfcd20"
+          ],
+          "pending": [],
+          "skipped": [
+            "280d8226-d30d-4a56-88de-9922a89d9131"
+          ],
+          "duration": 21003,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "9800215e-0eb1-4e5d-8e8c-8d67c3c23140",
+          "title": "Test Query parameters",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Get user details based on ID",
+              "fullTitle": "Test Query parameters Get user details based on ID",
+              "timedOut": null,
+              "duration": 30303,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'GET',\n  url: Cypress.env('mock_url') + '/users/1',\n  headers: {\n    'Content-type': 'application/json'\n  }\n}).as('request');\ncy.get('@request').its('status').should('equal', 200);\ncy.get('@request').its('body').then(function (response) {\n  cy.log(JSON.stringify(response));\n  expect(response).deep.equal({\n    \"id\": 1,\n    \"name\": \"Jonas\",\n    \"surname\": \"T.\"\n  });\n});",
+              "err": {
+                "message": "CypressError: `cy.request()` timed out waiting `30000ms` for a response from your server.\n\nThe request we sent was:\n\nMethod: GET\nURL: http://localhost:3000/users/1\n\nNo response was received within the timeout.\n\nhttps://on.cypress.io/request",
+                "estack": "CypressError: `cy.request()` timed out waiting `30000ms` for a response from your server.\n\nThe request we sent was:\n\nMethod: GET\nURL: http://localhost:3000/users/1\n\nNo response was received within the timeout.\n\nhttps://on.cypress.io/request\n    at http://localhost:52310/__cypress/runner/cypress_runner.js:159709:19\n    at tryCatcher (http://localhost:52310/__cypress/runner/cypress_runner.js:10325:23)\n    at http://localhost:52310/__cypress/runner/cypress_runner.js:5447:41\n    at tryCatcher (http://localhost:52310/__cypress/runner/cypress_runner.js:10325:23)\n    at Promise._settlePromiseFromHandler (http://localhost:52310/__cypress/runner/cypress_runner.js:8260:31)\n    at Promise._settlePromise (http://localhost:52310/__cypress/runner/cypress_runner.js:8317:18)\n    at Promise._settlePromise0 (http://localhost:52310/__cypress/runner/cypress_runner.js:8362:10)\n    at Promise._settlePromises (http://localhost:52310/__cypress/runner/cypress_runner.js:8438:18)\n    at _drainQueueStep (http://localhost:52310/__cypress/runner/cypress_runner.js:5032:12)\n    at _drainQueue (http://localhost:52310/__cypress/runner/cypress_runner.js:5025:9)\n    at Async.../../node_modules/bluebird/js/release/async.js.Async._drainQueues (http://localhost:52310/__cypress/runner/cypress_runner.js:5041:5)\n    at Async.drainQueues (http://localhost:52310/__cypress/runner/cypress_runner.js:4911:14)\nFrom Your Spec Code:\n    at Context.eval (http://localhost:52310/__cypress/tests?p=cypress\\integration\\mockAPI_examples\\mock_get_calls.js:128:8)",
+                "diff": null
+              },
+              "uuid": "b606c28a-9ad3-42bb-82d0-5e770f91b59f",
+              "parentUUID": "9800215e-0eb1-4e5d-8e8c-8d67c3c23140",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Get user using mached characters of name field/Text search",
+              "fullTitle": "Test Query parameters Get user using mached characters of name field/Text search",
+              "timedOut": null,
+              "duration": 25502,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'GET',\n  url: Cypress.env('mock_url') + '/users?q=J',\n  headers: {\n    'Content-type': 'application/json'\n  }\n}).as('request');\ncy.get('@request').its('body').then(function (response) {\n  response.forEach(function (element) {\n    expect(element.name).to.be.contains('J');\n  });\n});",
+              "err": {},
+              "uuid": "635f5ba8-760b-474c-949c-b09ab9143b83",
+              "parentUUID": "9800215e-0eb1-4e5d-8e8c-8d67c3c23140",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Get user using pagination and limit",
+              "fullTitle": "Test Query parameters Get user using pagination and limit",
+              "timedOut": null,
+              "duration": 52,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'GET',\n  url: Cypress.env('mock_url') + '/users?_page=1&_limit=1',\n  headers: {\n    'Content-type': 'application/json'\n  }\n}).as('request');\ncy.get('@request').its('body').then(function (response) {\n  expect(response.length).to.be.equal(1);\n});",
+              "err": {},
+              "uuid": "5fb120a6-39a3-47d1-a9a9-be3f688dda1b",
+              "parentUUID": "9800215e-0eb1-4e5d-8e8c-8d67c3c23140",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "635f5ba8-760b-474c-949c-b09ab9143b83",
+            "5fb120a6-39a3-47d1-a9a9-be3f688dda1b"
+          ],
+          "failures": [
+            "b606c28a-9ad3-42bb-82d0-5e770f91b59f"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 55857,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.1"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome-report",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "charts": true,
+        "timestamp": "mmddyyyy_HHMMss"
+      },
+      "version": "5.1.0"
+    }
+  }
+}

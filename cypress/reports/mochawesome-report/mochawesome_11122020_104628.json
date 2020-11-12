@@ -1,0 +1,107 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2020-11-12T10:46:27.611Z",
+    "end": "2020-11-12T10:46:28.324Z",
+    "duration": 713,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "888018db-4b13-417b-984d-83bafefafe93",
+      "title": "",
+      "fullFile": "cypress\\integration\\restAPI\\get_requests\\get_calls_using_basic_auth.js",
+      "file": "cypress\\integration\\restAPI\\get_requests\\get_calls_using_basic_auth.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "678c30eb-a675-4b62-aeb7-68a9524a6765",
+          "title": "GET calls using Basic Authentication Tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Get all repos",
+              "fullTitle": "GET calls using Basic Authentication Tests Get all repos",
+              "timedOut": null,
+              "duration": 672,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('@request').then(function ($response) {\n  expect($response.status).equal(200);\n  expect($response.body).to.be.not[\"null\"];\n  expect($response.body[0].name).equal('Appium');\n  expect($response.body[0].owner.url).equal('https://api.github.com/users/praveenreddynarala');\n});",
+              "err": {},
+              "uuid": "aa3348eb-0471-4c10-b374-4aa5b93cdf65",
+              "parentUUID": "678c30eb-a675-4b62-aeb7-68a9524a6765",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "aa3348eb-0471-4c10-b374-4aa5b93cdf65"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 672,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.1"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome-report",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "charts": true,
+        "timestamp": "mmddyyyy_HHMMss"
+      },
+      "version": "5.1.0"
+    }
+  }
+}
