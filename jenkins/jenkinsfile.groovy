@@ -42,31 +42,18 @@ pipeline {
       }
     }
 
-    // stage('cypress parallel tests') {
-    //   environment {
-    //     // we will be recording test results and video on Cypress dashboard
-    //     // to record we need to set an environment variable
-    //     // we can load the record key variable from credentials store
-    //     // see https://jenkins.io/doc/book/using/using-credentials/
-    //     CYPRESS_RECORD_KEY = credentials('CYPRESS_RECORD_KEY')
-    //     // because parallel steps share the workspace they might race to delete
-    //     // screenshots and videos folders. Tell Cypress not to delete these folders
-    //     CYPRESS_trashAssetsBeforeRuns = 'false'
-    //   } 
-
-      stage('Run Tests') {
-          steps {
-            echo "Running build ${env.BUILD_ID}"
-            script {
-              try{
-                sh 'npx -e NO_COLOR=1 cypress run --env reqres_url=${params.reqres_url},gorest_url=${params.gorest_url},github_url=${params.github_url},auth_username=${params.auth_username},auth_password=${env.GH_PASSWORD},bearer_token=${env.GOREST_BEARER_TOKEN},github_bearer_token=${env.GIT_HUB_BEARER_TOKEN},mock_url=${params.mock_url}'
-              }catch(Exception e){
-                echo 'Passed'
-              }
+    stage('Run Tests') {
+        steps {
+          echo "Running build ${env.BUILD_ID}"
+          script {
+            try{
+              sh 'npx -e NO_COLOR=1 cypress run --env reqres_url=${params.reqres_url},gorest_url=${params.gorest_url},github_url=${params.github_url},auth_username=${params.auth_username},auth_password=${env.GH_PASSWORD},bearer_token=${env.GOREST_BEARER_TOKEN},github_bearer_token=${env.GIT_HUB_BEARER_TOKEN},mock_url=${params.mock_url}'
+            }catch(Exception e){
+              echo 'Passed'
             }
           }
         }
-    }
+      }
 
     stage('Generate Reports'){
       steps {
