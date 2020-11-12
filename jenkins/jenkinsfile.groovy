@@ -23,9 +23,17 @@ pipeline {
     stage('Scm checkout') {
       when {
         branch comparator: 'EQUALS', pattern: 'cypressAPI'
-    }
+      }
+    
       steps {
-        git branch: 'cypressAPI', credentialsId: 'f6a76776-a640-40a2-ac8b-0126a137a4a6', url: 'https://github.com/praveenreddynarala/cypress_cogmento_E2E_Test.git'
+        checkout scm: [
+          $class: 'GitSCM', 
+          branches: [[name: '*/cypressAPI']], 
+          doGenerateSubmoduleConfigurations: false, 
+          extensions: [], 
+          submoduleCfg: [], 
+          userRemoteConfigs: [[credentialsId: 'f6a76776-a640-40a2-ac8b-0126a137a4a6', url: 'https://github.com/praveenreddynarala/cypress_cogmento_E2E_Test.git']]
+          ]
       }
     }
 
