@@ -7,9 +7,9 @@ describe('GitHub E2E Test Workflow', () => {
             method: 'POST',
             url: Cypress.env('github_url') + '/user/repos',
             auth:{
-                // bearer: Cypress.env('github_bearer_token')
-                user: Cypress.env('auth_username'),
-                password: Cypress.env('auth_password')
+                bearer: Cypress.env('github_bearer_token')
+                // user: Cypress.env('auth_username'),
+                // password: Cypress.env('auth_password')
             },
             headers:{
                 'Content-type':'application/json'
@@ -33,9 +33,9 @@ describe('GitHub E2E Test Workflow', () => {
             method: 'GET',
             url: Cypress.env('github_url') + '/repos/praveenreddynarala/' + new_repo_name,
             auth:{
-                // bearer: Cypress.env('github_bearer_token')
-                user: Cypress.env('auth_username'),
-                password: Cypress.env('auth_password')
+                bearer: Cypress.env('github_bearer_token')
+                // user: Cypress.env('auth_username'),
+                // password: Cypress.env('auth_password')
             },
             headers:{
                 'Content-type':'application/json'
@@ -54,9 +54,9 @@ describe('GitHub E2E Test Workflow', () => {
             method: 'GET',
             url: Cypress.env('github_url') + '/repos/praveenreddynarala/'+ new_repo_name +'/contents',
             auth:{
-                // bearer: Cypress.env('github_bearer_token')
-                user: Cypress.env('auth_username'),
-                password: Cypress.env('auth_password')
+                bearer: Cypress.env('github_bearer_token')
+                // user: Cypress.env('auth_username'),
+                // password: Cypress.env('auth_password')
             },
             headers:{
                 'Content-type':'application/json'
@@ -77,9 +77,9 @@ describe('GitHub E2E Test Workflow', () => {
             method: 'PUT',
             url: Cypress.env('github_url') + '/repos/praveenreddynarala/'+ new_repo_name +'/contents/README.md',
             auth:{
-                // bearer: Cypress.env('github_bearer_token')
-                user: Cypress.env('auth_username'),
-                password: Cypress.env('auth_password')
+                bearer: Cypress.env('github_bearer_token')
+                // user: Cypress.env('auth_username'),
+                // password: Cypress.env('auth_password')
             },
             body: {
                 "message": "my first commit message",
@@ -106,9 +106,9 @@ describe('GitHub E2E Test Workflow', () => {
             method: 'PUT',
             url: Cypress.env('github_url') + '/repos/praveenreddynarala/'+ new_repo_name +'/contents/README.md',
             auth:{
-                // bearer: Cypress.env('github_bearer_token')
-                user: Cypress.env('auth_username'),
-                password: Cypress.env('auth_password')
+                bearer: Cypress.env('github_bearer_token')
+                // user: Cypress.env('auth_username'),
+                // password: Cypress.env('auth_password')
             },
             body: {
                 "message": "my commit message",
@@ -132,9 +132,9 @@ describe('GitHub E2E Test Workflow', () => {
             method: 'DELETE',
             url: Cypress.env('github_url') + '/repos/praveenreddynarala/'+ new_repo_name +'/contents/README.md',
             auth:{
-                // bearer: Cypress.env('github_bearer_token')
-                user: Cypress.env('auth_username'),
-                password: Cypress.env('auth_password')
+                bearer: Cypress.env('github_bearer_token')
+                // user: Cypress.env('auth_username'),
+                // password: Cypress.env('auth_password')
             },
             body: {
                 "message": "delete file",
@@ -155,9 +155,9 @@ describe('GitHub E2E Test Workflow', () => {
             method: 'PATCH',
             url: Cypress.env('github_url') + '/repos/praveenreddynarala/'+ new_repo_name,
             auth:{
-                // bearer: Cypress.env('github_bearer_token')
-                user: Cypress.env('auth_username'),
-                password: Cypress.env('auth_password')
+                bearer: Cypress.env('github_bearer_token')
+                // user: Cypress.env('auth_username'),
+                // password: Cypress.env('auth_password')
             },
             body: {
                 "name": "Hello-World",
@@ -179,8 +179,9 @@ describe('GitHub E2E Test Workflow', () => {
             method: 'DELETE',
             url: Cypress.env('github_url') + '/repos/praveenreddynarala/'+ new_repo_name,
             auth:{
-                user: Cypress.env('auth_username'),
-                password: Cypress.env('auth_password')
+                bearer: Cypress.env('github_bearer_token')
+                // user: Cypress.env('auth_username'),
+                // password: Cypress.env('auth_password')
             }
         }).then(response => {
             expect(response.status).equal(204)

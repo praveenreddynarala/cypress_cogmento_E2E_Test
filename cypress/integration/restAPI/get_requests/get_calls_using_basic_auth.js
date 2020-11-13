@@ -10,8 +10,9 @@ describe('GET calls using Basic Authentication Tests', () => {
             method:'GET',
             url: Cypress.env('github_url')+'/user/repos',
             auth:{
-                user: Cypress.env('auth_username'),
-                password: Cypress.env('auth_password')
+                bearer: Cypress.env('github_bearer_token')
+                // user: Cypress.env('auth_username'),
+                // password: Cypress.env('auth_password')
             },
             headers:{
                 'accept':'application/json'
