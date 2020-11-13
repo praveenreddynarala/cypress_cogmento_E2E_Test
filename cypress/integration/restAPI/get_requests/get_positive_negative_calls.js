@@ -121,19 +121,6 @@ describe('GET negative calls', () => {
             expect($response.status).equal(404)
         })
     })
-
-    it('Single resource not found', () => {
-        cy.request({
-            method: 'GET',
-            url: '/api/unknown/23', 
-            headers: {
-                'accept': 'application/json'
-            },
-            failOnStatusCode:false //fail on status code if we remove this option or set to true
-        }).then(($response) => {
-            expect($response.status).equal(404)
-        })
-    })
 })
 //#endregion
 

@@ -48,7 +48,7 @@ describe('Optional Query Parameter tests', () => {
         }).as('request1')
     })
 
-    it('Check expected response', () => {
+    it.skip('Check expected response', () => {
         cy.get('@request1')
         .its('body')
         .its('data').then(response => {
