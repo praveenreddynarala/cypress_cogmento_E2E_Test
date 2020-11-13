@@ -54,8 +54,9 @@ pipeline {
         steps {
           echo "Running build ${env.BUILD_ID}"
           script {
-            try{
-              bat "npx -e NO_COLOR=1 cypress run --record --key ${params.CYPRESS_RECORD_KEY} --env reqres_url=${params.reqres_url},gorest_url=${params.gorest_url},github_url=${params.github_url},auth_username=${params.auth_username},auth_password=${env.GH_PASSWORD},bearer_token=${env.GOREST_BEARER_TOKEN},github_bearer_token=${env.GIT_HUB_BEARER_TOKEN},mock_url=${params.mock_url}"
+            try{#
+
+              bat "npx -e NO_COLOR=1 cypress run --record --key e2ccadb8-bf34-47bb-852b-9fe78e387d57 --env reqres_url=${params.reqres_url},gorest_url=${params.gorest_url},github_url=${params.github_url},auth_username=${params.auth_username},auth_password=${env.GH_PASSWORD},bearer_token=${env.GOREST_BEARER_TOKEN},github_bearer_token=${env.GIT_HUB_BEARER_TOKEN},mock_url=${params.mock_url}"
             }catch(Exception e){
               echo 'Passed'
             }
