@@ -39,15 +39,17 @@ pipeline {
 
     stage('Install Dependencies') {
       steps {
-        bat 'npm config set registry http://registry.npmjs.org/'
-        bat 'npm install'
-        bat 'npm install jason-server --save -dev'
-        bat 'npm install faker --save'
-        bat 'npm install mocha --save-dev'
-        bat 'npm install cypress-multi-reporters --save-dev'
-        bat 'npm install mochawesome --save-dev'
-        bat 'npm install mochawesome-merge --save-dev'
-        bat 'npm install mochawesome-report-generator --save-dev'
+        npm i  -g npm@6.14.8
+        npm ci
+        //bat 'npm config set registry http://registry.npmjs.org/'
+        //bat 'npm install'
+        //bat 'npm install jason-server --save -dev'
+        //bat 'npm install faker --save'
+        //bat 'npm install mocha --save-dev'
+        //bat 'npm install cypress-multi-reporters --save-dev'
+        //bat 'npm install mochawesome --save-dev'
+        //bat 'npm install mochawesome-merge --save-dev'
+        //bat 'npm install mochawesome-report-generator --save-dev'
       }
     }
 
