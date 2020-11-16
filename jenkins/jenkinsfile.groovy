@@ -39,8 +39,8 @@ pipeline {
 
     stage('Install Dependencies') {
       steps {
-        //npm i  -g npm@6.14.8
-        npm ci
+        bat npm i  -g npm@6.14.8
+        bat npm ci
         //bat 'npm config set registry http://registry.npmjs.org/'
         //bat 'npm install'
         //bat 'npm install jason-server --save -dev'
