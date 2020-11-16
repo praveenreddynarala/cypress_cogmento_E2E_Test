@@ -39,7 +39,7 @@ pipeline {
 
     stage('Install Dependencies') {
       steps {
-        npm i  -g npm@6.14.8
+        //npm i  -g npm@6.14.8
         npm ci
         //bat 'npm config set registry http://registry.npmjs.org/'
         //bat 'npm install'
