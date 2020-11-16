@@ -51,6 +51,12 @@ pipeline {
       }
     }
 
+    stage('Start local server') {
+      steps {
+        sh 'nohup npm run serve --no-clipboard --listen ${PORT:-8383} &'
+      }
+    }
+
     stage('Run Tests') {
         steps {
           echo "Running build ${env.BUILD_ID}"
@@ -77,7 +83,8 @@ pipeline {
   post {
     always {
       script {
-        echo 'Generate Test Report'
+        echo 'Stopping local server'
+        sh 'pkill -f http-server'
       }
     }
     success {
