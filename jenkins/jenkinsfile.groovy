@@ -51,12 +51,6 @@ pipeline {
       }
     }
 
-    stage('Start local server') {
-      steps {
-        sh 'nohup npm run serve --no-clipboard --listen ${PORT:-8383} &'
-      }
-    }
-
     stage('Run Tests') {
         steps {
           echo "Running build ${env.BUILD_ID}"
@@ -80,27 +74,67 @@ pipeline {
     }
   }
 
+  // stage('Archive Test Reports') {
+  //   steps {
+  //     script {
+  //         createArtifact()
+  //     }
+  //   }
+  // }
+
   post {
     always {
       script {
-        echo 'Stopping local server'
-        sh 'pkill -f http-server'
+        bat 'echo ALWAYS'
+        sendMail()
       }
     }
     success {
       script {
-        bat 'echo SUCCESS'
+        if(currentBuild.currentResult  == 'SUCCESS') {
+          bat 'echo SUCCESS'
+          sendMail()
+        }
       }
     }
     unstable {
       script {
-        bat 'echo UNSTABLE'
+        if(currentBuild.currentResult  == 'UNSTABLE') {
+          bat 'echo UNSTABLE'
+        }
       }
     }
     failure {
       script {
-        bat 'echo FAILURE'
+        if(currentBuild.currentResult  == 'FAILURE') {
+          bat 'echo FAILURE'
+        }
       }
     }
   }
+}
+
+def createArtifact() {
+  def exec = """
+    cd ${workspace}/cypress
+    ls -lrt
+    """
+
+    bar exec
+    zip zipFile: 'Cypress_Test_Reports.zip', dir:'reports/mochareports'
+    return zipFile
+}
+
+def sendMail() {
+  def exec = """
+    mail bcc: '', body: '''Hi,
+
+    Please find the Cypress Test Report below location.
+    archive \'${env.WORKSPACE}\\\\cypress\\\\reports\\\\mochareports\\\\\'
+
+    Regards,
+    Test Team''', cc: '', from: '', replyTo: '', subject: 'Cypress Test Report', to: 'praveenreddy.narala@gmail.com'
+    """
+
+    bar exec
 }
