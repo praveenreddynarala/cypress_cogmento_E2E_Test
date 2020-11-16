@@ -126,7 +126,6 @@ def createArtifact() {
 }
 
 def sendMail() {
-  def exec = """
     mail bcc: '', body: '''Hi,
 
     Please find the Cypress Test Report below location.
@@ -134,7 +133,4 @@ def sendMail() {
 
     Regards,
     Test Team''', cc: '', from: '', replyTo: '', subject: 'Cypress Test Report', to: 'praveenreddy.narala@gmail.com'
-    """
-
-    bar exec
 }
