@@ -7,7 +7,7 @@
     "json:server": "json-server",
     "js:server": "node cypress/support/mocks/server.js",
     "cypress:open": "cypress run",
-    "tests": "cypress run",
+    "tests": "cypress run --record",
     "cy:run": "cypress run",
     "cy:verify": "cypress verify",
     "cy:info": "cypress info",
