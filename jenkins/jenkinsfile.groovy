@@ -78,13 +78,14 @@ pipeline {
     always {
       script {
         bat 'echo ALWAYS'
-        archiveArtifacts artifacts: "${env.WORKSPACE}\\cypress\\reports\\mochareports\\**"
+        archive "${env.WORKSPACE}/cypress/reports/mochareports/**"
       }
     }
     success {
       script {
         if(currentBuild.currentResult  == 'SUCCESS') {
           bat 'echo SUCCESS'
+          archive "${env.WORKSPACE}/cypress/reports/mochareports/**"
         }
       }
     }
