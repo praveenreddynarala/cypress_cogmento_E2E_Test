@@ -74,26 +74,17 @@ pipeline {
     }
   }
 
-  // stage('Archive Test Reports') {
-  //   steps {
-  //     script {
-  //         createArtifact()
-  //     }
-  //   }
-  // }
-
   post {
     always {
       script {
         bat 'echo ALWAYS'
-        sendMail()
+        archiveArtifacts artifacts: "${env.WORKSPACE}\\cypress\\reports\\mochareports\\**"
       }
     }
     success {
       script {
         if(currentBuild.currentResult  == 'SUCCESS') {
           bat 'echo SUCCESS'
-          sendMail()
         }
       }
     }
@@ -112,25 +103,4 @@ pipeline {
       }
     }
   }
-}
-
-def createArtifact() {
-  def exec = """
-    cd ${workspace}/cypress
-    ls -lrt
-    """
-
-    bar exec
-    zip zipFile: 'Cypress_Test_Reports.zip', dir:'reports/mochareports'
-    return zipFile
-}
-
-def sendMail() {
-    mail bcc: '', body: '''Hi,
-
-    Please find the Cypress Test Report below location.
-    archive \'${env.WORKSPACE}\\\\cypress\\\\reports\\\\mochareports\\\\\'
-
-    Regards,
-    Test Team''', cc: '', from: '', replyTo: '', subject: 'Cypress Test Report', to: 'praveenreddy.narala@gmail.com'
 }
