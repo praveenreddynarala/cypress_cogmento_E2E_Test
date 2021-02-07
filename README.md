@@ -1,11 +1,139 @@
-# Page Object Model in Cypress
+# UI Test Automation Best Practices and Page Object Model in Cypress
 
+
+## 8 best practices we should follow in UI Automation
+
+1. Consider using a BDD framework
+2. Always use test design patterns and principles
+3. Avoid using static wait (cy.wait())
+4. Proper naming convention to each test
+5. Test should be simple and do not keep unneccessary comments
+6. Every test must has one and only one validation
+7. All tests should be independent
+8. Use Data Driver approach for repeatable tests
+
+### Consider using a BDD framework
+
+I always recommend BDD is one of the best practice we should follow while doing UI Automation. There are advantages in using BDD. 
+
+1. BDD is a methodology that helps teams understand each other, creating strong outside and inside team collaboration. By writing your tests with BDD you also create     specifications that can help your team understand tests and requirements much better. This means that along with writing your tests, you are creating a clear tests documentation. This ensures you don’t waste other team members’ time (who might work on your tests later), as well as your own time, because you don’t need to explain and help with such tests if they are unclear.
+2. BDD helps the Business side (e.g.Test and Project managers) understand these tests. This brings additional value to testing because they can make recommendations based on business benefits.
+3. BDD usually forces you to follow a strict code organization pattern, which helps avoid code duplication. This is done by having separate components called steps or actions that will be the building blocks for your tests.
+
+### Always use test design patterns and principles
+
+A design pattern is a reusable solution for a common problem in software design. We can say that each pattern is a particular example of a specific solution for a specific problem, regardless of the programming language or paradigm. Here I will talk about **Page Object Model**, though we have other patterns like **Screenplay**.
+
+Page Objects patterns purpose was to make UI automation tests consistent, to avoid code duplication, to improve readability and to organize code for web pages interaction. During web tests creation you always need to interact with web pages and web elements that are presented on these pages (buttons, input elements, images, etc.). The Page Objects pattern takes this requirement and applies object oriented programming principles on top of this, enforcing you to interact with all pages and elements as with objects.
+
+Here page is anything you test (example Sign In page) and objects are User Name, Password text fields and SignIn button field. 
+
+### Avoid using static wait (cy.wait())
+
+Kindly refer why should avoid using cy.wait(). https://docs.cypress.io/guides/references/best-practices.html
+
+
+### Proper naming convention to each test
+
+Test names should be very clear and provide a self-descriptive idea about which exact functionality is being tested by using this test. Why? First, you need to immediately understand what each test verifies even a year after you wrote the test. In addition to that, you should always help your team members and make all your tests clear for them. Moreover, if some of the tests failed during tests execution run, you should understand which functionality was broken just by having a quick look at the test name. You should not waste time on verifying what the test actually does.
+
+__Bad Example__
+
+      it('Admin login', () -> {})
+      
+__Good Example__
+
+      it('Login as the administrator', () -> {})
+      
+Test naming convention ensures that:
+
+1. The name of a test method describes a specific business or technical requirement.
+2. The name of a test method describes expected input (or state) and the expected result for that input (state).
+
+
+### Test should be simple and do not keep unneccessary comments
+
+Tests should always be clear and simple to read. If you have a feeling you need to leave a comment to understand what is done in this line, then you need to take a step back and think again about what are you doing wrong.
+
+Recommendation to use Page Object pattern like below to avoid comments for each line what it does.
+
+__Example__ signin, verify_login_success, create_new_contact, global_search, validate_created_contact and delete_created_contact. These functions does not need additional comments to understand any layman.
+
+      describe('Contacts Test Cases', () => {   
+    
+    let created_contact
+    let testData
+
+    before('Load test data from fixtures', () => {
+        cy.fixture('example.json').then(($exampleData) => {
+            testData = $exampleData
+        })
+    })
+
+    beforeEach('Open Contacts screen', () => {
+        cy.visit('/', {failOnStatusCode:false})
+        cy.clearCookies()
+        signin(testData.userName, testData.psw)
+        verify_login_success('Praveen Narala')
+    })
+
+    it('Create new Contact', () => {
+        cy.visit('/contacts')
+        created_contact = create_new_contact()
+        cy.log(created_contact)
+        global_search(created_contact)
+        validate_created_contact(created_contact + ' Reddy Narala')
+    })
+
+    it('Delete created Contact', () => {
+        global_search(created_contact)
+        delete_created_contact(created_contact + ' Reddy Narala')
+        page_toolbar_actions('Delete')
+        global_search(created_contact)
+        validate_created_contact_got_deleted(created_contact + ' Reddy Narala')
+    })
+})
+
+
+### Every test must has one and only one validation
+
+Ensure not to keep too many validation in any test. This will avoid the behaviour of test scenario. Highly recommend use simple tests which are independent to each other. Purpose of test should not void.
+
+__Example__ Below test job/behavior to create new contact. Hence, the validation of this test is to get created contact and match with expected one. If you have delete, please keep that test independent from here.
+
+      it('Create new Contact', () => {
+        cy.visit('/contacts')
+        created_contact = create_new_contact()
+        cy.log(created_contact)
+        global_search(created_contact)
+        validate_created_contact(created_contact + ' Reddy Narala')
+    })
+
+In BDD stype...
+
+
+    Scenario: Create new contact
+      Given user navigate to "contacts" screen
+      When user create new contact:
+          | FirstName | LastName | MiddleName | Category  | Status | Description         |
+          | Praveen   | Narala   | Reddy      | Affiliate | New    | Sample Description! |
+      Then user should be able to validate created contact
+
+    Scenario: Deleted created contact
+        And user search for created contact
+        And user delete created contact
+        Then user should not be able to see deleted contact
 ---
+
+## Page Object pattern
+
 In typical Page Object Model, each web page has its own class and where you maintain all page element locators & its actions. Using class objects, we can expose pages in test classes. What if, the application has 100+ pages and it is still growing and ended up in creating too many page classes.
 
 Unlike the above pattern, we still follow the Page Object model without using Object-Oriented programming. JavaScript is a Light Oriented programming language and Cypress took this advantage is developing E2E tests without any hassle. Hence, instead of creating page classes, should use page files, utils or Cypress common.js. 
 
 **Page files** (.js or .ts). are independent and maintains all page level locators and its actions at one place. Instead class, we use simple JavaScript functions (if not better because the type check step can understand individual function signatures) and export them. 
+
+__login_page.js__
 
                 
                 import { expect } from "chai";
@@ -30,8 +158,69 @@ Unlike the above pattern, we still follow the Page Object model without using O
                     })
                 }
                 
+__Cucumber step definition file__
 
-Use the advantage of **Cypress commonds.js** file to maintain all application level reusable functions. This will reduce the dependency and maintenance. It acts like an one stop shot.
+
+      import { Before, Given } from "cypress-cucumber-preprocessor/steps";
+      import { signin, verify_login_success } from "../../framework/pageObjects/openCRM_login_page";
+
+      let testData
+
+      Before(() => {
+          cy.fixture('example.json').then(($exampleData) => {
+              testData = $exampleData
+          })
+      })
+
+      Given('user login to applications', () => {
+          cy.visit('/', {failOnStatusCode:false)
+          cy.clearCookies()
+          signin(testData.userName, testData.psw)
+          verify_login_success('Praveen Narala')
+      })
+      
+__Cucumber Feature__
+
+    
+    Feature: Open CRM Contacts
+
+    Background: Login to application
+        Given user login to application //Login behaviour
+
+    Scenario: Create new contact
+        Given user navigate to "contacts" screen
+        When user create new contact:
+            | FirstName | LastName | MiddleName | Category  | Status | Description         |
+            | Praveen   | Narala   | Reddy      | Affiliate | New    | Sample Description! |
+        Then user should be able to validate created contact
+
+
+__Otherway, calling Sign In page in Cypress Specification file__
+
+
+      import { signin, verify_login_success } from "../../framework/pageObjects/openCRM_login_page"; //Page Object reference
+
+    describe('Contacts Test Cases', () => {   
+    
+      let testData
+
+      before('Load test data from fixtures', () => {
+          cy.fixture('example.json').then(($exampleData) => {
+              testData = $exampleData
+          })
+      })
+
+      it('Open Contacts screen', () => {
+          cy.visit('/', {failOnStatusCode:false) //This will avoid uncertain UI page load failures
+          cy.clearCookies()
+          signin(testData.userName, testData.psw) // Page Object
+          verify_login_success('Praveen Narala')
+      })
+    })  
+
+### Best ways of maintaining Reusable Functions
+
+Using Cypress **commonds.js** file to maintain all application level reusable functions. This will reduce the dependency and maintenance. It acts like an one stop shot. Example button clicks, typing text, selecting value from dropdown and handling list controls etc...
 
 
                 //Create element
@@ -66,7 +255,9 @@ Use the advantage of **Cypress commonds.js** file to maintain all application le
                 })
                 
                 
-To expose all custome commands through Cypress (cy 0 commands, we shoould create index.d.ts file in cypress/support folder.
+### Expose all reusable functions in Cyress tests/page object files using **Cy** command
+
+Create Chainable interface for all custome commands in index.d.ts file in cypress/support folder.
 
                 /// <reference types="cypress" />
 
@@ -93,32 +284,7 @@ To expose all custome commands through Cypress (cy 0 commands, we shoould create
                         setValue(element_locator:string, value:string): Chainable<any>
                 
                 
-__IMPORTANT NOTE__ (Please find below steps to see how to configure Intellisense to expose all custom commands)
-
-Example of calling above SignIn page in Cypress spec files (tests)
-
-
-                import { signin, verify_login_success } from "../../framework/pageObjects/openCRM_login_page";
-
-                describe('Contacts Test Cases', () => {   
-
-                    let created_contact
-                    let testData
-
-                    before('Load test data from fixtures', () => {
-                        cy.fixture('example.json').then(($exampleData) => {
-                            testData = $exampleData
-                        })
-                    })
-                it('Create new Contact', () => {
-                        cy.visit('/contacts')
-                        created_contact = create_new_contact()
-                        cy.log(created_contact)
-                        global_search(created_contact)
-                        validate_created_contact(created_contact + ' Reddy Narala')
-                    })
-                    
-                 })         
+__IMPORTANT NOTE__ (Please find below steps to see how to configure Intellisense to expose all custom commands)        
 ---
 
 ## Setup
